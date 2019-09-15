@@ -1,8 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Game_Parts/Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://Game_Parts/Player/Path2D.gd" type="Script" id=2]
-[ext_resource path="res://Resources/un_sphere.png" type="Texture" id=3]
+[ext_resource path="res://Resources/ringed_sphere.png" type="Texture" id=3]
+[ext_resource path="res://Resources/Particles/effect4.png" type="Texture" id=4]
+[ext_resource path="res://Game_Parts/Player/Canon.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Resources/Particles/effect5.png" type="Texture" id=6]
 
 [sub_resource type="Animation" id=1]
 resource_name = "move"
@@ -29,7 +32,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 0.5, 1 ),
 "transitions": PoolRealArray( 1, -2, 1 ),
 "update": 0,
-"values": [ 0.0, -15.0, 0.0 ]
+"values": [ 0.0, -20.0, 0.0 ]
 }
 tracks/2/type = "method"
 tracks/2/path = NodePath(".")
@@ -45,11 +48,39 @@ tracks/2/keys = {
 "method": "jumpComplete"
 } ]
 }
+tracks/3/type = "value"
+tracks/3/path = NodePath("Path2D/PathFollow2D2:unit_offset")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Path2D/PathFollow2D2/effect4:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, -2, 1 ),
+"update": 0,
+"values": [ Vector2( 0.6, 0.3 ), Vector2( 0.3, 0.15 ), Vector2( 0.6, 0.3 ) ]
+}
 
 [sub_resource type="Curve2D" id=2]
 _data = {
 "points": PoolVector2Array( 0, 0, 0, 0, -0.4133, -0.733423, 0, 0, 0, 0, 14.2308, 10.5051 )
 }
+
+[sub_resource type="Gradient" id=3]
+offsets = PoolRealArray( 0.311258, 0.933775 )
+colors = PoolColorArray( 1, 1, 1, 1, 0, 0, 0, 0 )
 
 [node name="Player" type="Node2D"]
 script = ExtResource( 1 )
@@ -63,11 +94,50 @@ script = ExtResource( 2 )
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
 position = Vector2( -0.4133, -0.733423 )
-rotation = 0.654571
 rotate = false
 loop = false
 
 [node name="Sprite" type="Sprite" parent="Path2D/PathFollow2D"]
-scale = Vector2( 0.2, 0.2 )
+position = Vector2( 0, -6 )
+scale = Vector2( 0.3, 0.3 )
 z_index = 5
 texture = ExtResource( 3 )
+
+[node name="PathFollow2D2" type="PathFollow2D" parent="Path2D"]
+position = Vector2( -0.4133, -0.733423 )
+rotate = false
+loop = false
+
+[node name="effect4" type="Sprite" parent="Path2D/PathFollow2D2"]
+modulate = Color( 0, 0, 0, 0.364706 )
+position = Vector2( 0, 2 )
+scale = Vector2( 0.6, 0.3 )
+texture = ExtResource( 4 )
+
+[node name="Canon" parent="." instance=ExtResource( 5 )]
+z_index = 6
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+visible = false
+position = Vector2( 0, -6.45451 )
+scale = Vector2( 0.6, 0.6 )
+z_index = 6
+amount = 12
+lifetime = 0.8
+speed_scale = 0.3
+explosiveness = 1.0
+texture = ExtResource( 6 )
+emission_shape = 1
+emission_sphere_radius = 4.0
+spread = 0.0
+gravity = Vector2( 0, -98.8 )
+angular_velocity = -278.71
+angular_velocity_random = 0.39
+damping = 17.2
+angle = 325.2
+angle_random = 0.49
+scale_amount = 0.5
+scale_amount_random = 0.55
+color_ramp = SubResource( 3 )
+hue_variation = 1.0
+hue_variation_random = 0.14
