@@ -41,6 +41,3 @@ func jumpComplete():
 	global_position=targetPosition
 	pass
 
-func _on_Timer_timeout():
-	jump_in_direction(Vector2(((randi()%2)*2)-1,(((randi()%2)*2)-1)))
-	pass # Replace with function body.
