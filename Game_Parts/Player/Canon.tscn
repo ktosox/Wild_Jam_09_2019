@@ -17,8 +17,8 @@ visible = false
 [node name="fireParticle3" type="CPUParticles2D" parent="."]
 visible = false
 
-[node name="Polygon2D" type="Polygon2D" parent="."]
-polygon = PoolVector2Array( -1.96643, 0.28458, 1.36315, 7.4194, 7.07101, 15.5055, 14.9193, 8.84637, 6.1197, 2.66285, 0.649666, -2.33152 )
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/fire = SubResource( 1 )
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+polygon = PoolVector2Array( 0.0678253, -3.55299, -3.28175, 0.63398, 1.21924, 3.46018, 3.20805, -0.308086 )
