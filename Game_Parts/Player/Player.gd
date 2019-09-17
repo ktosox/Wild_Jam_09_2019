@@ -1,8 +1,14 @@
 extends Node2D
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
+var fireData = [
+	1, # damange : 1 to 3
+	2, #range in cells - 2 to 5
+	3, #type : 1 - barrage / 2 - blast / 3 - lasor 
+	4, # particle type - 1 to 3
+	Color() # color data
+]
+#----------------------------------------------
+
 var validDirections = [
 	Vector2(0,-1),
 	Vector2(0,1),
@@ -10,6 +16,7 @@ var validDirections = [
 	Vector2(1,0)
 ]
 
+var currentDirection = Vector2(1,0)
 var currentCell = Vector2()
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -21,6 +28,8 @@ func update_current_cell():
 	currentCell = GM.currentBoard.world_to_map(global_position)
 
 func _input(event):
+	if(event.is_action_pressed("ui_select")):
+		$Canon.fire_canon(fireData)
 	if(event.is_action_pressed("LMB")):
 		var clickedCell = GM.currentBoard.world_to_map(get_global_mouse_position())
 		if(GM.currentBoard.is_cell_valid(clickedCell)):
@@ -57,6 +66,7 @@ func jump_in_direction(direction = Vector2()):
 		Vector2(-1,0):
 			directionAnimation = "SE"
 	$Path2D/PathFollow2D/Node2D/AnimationPlayer.play(directionAnimation)
+	currentDirection = direction
 	#$Path2D.curve = updatePath(GM.currentBoard.cell_to_grid(currentCell+direction))
 #	$Path2D.curve.add_point(global_position)
 #	$Path2D.curve.add_point(GM.currentBoard.cell_to_grid(currentCell+direction))
