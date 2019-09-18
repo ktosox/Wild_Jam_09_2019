@@ -30,10 +30,20 @@ LMB={
  ]
 }
 
+[layer_names]
+
+2d_physics/layer_1="DO NOT USE"
+2d_physics/layer_2="Player"
+2d_physics/layer_3="Crate"
+2d_physics/layer_4="Enemy"
+2d_physics/layer_5="Token"
+2d_physics/layer_6="Bullet Player"
+2d_physics/layer_7="Bullet Enemy"
+
 [rendering]
 
 quality/driver/driver_name="GLES2"
 vram_compression/import_etc=true
 vram_compression/import_etc2=false
-environment/default_clear_color=Color( 0.0392157, 0.631373, 0.745098, 1 )
+environment/default_clear_color=Color( 0.0666667, 0.0980392, 0.101961, 1 )
 environment/default_environment="res://default_env.tres"

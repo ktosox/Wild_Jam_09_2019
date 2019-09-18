@@ -43,7 +43,7 @@ autoplay = "New Anim"
 "anims/New Anim" = SubResource( 1 )
 
 [node name="Player" parent="." instance=ExtResource( 3 )]
-position = Vector2( 351.151, 400.878 )
+position = Vector2( 352.255, 403.56 )
 
 [node name="zeppelin" type="Sprite" parent="."]
 position = Vector2( 304.978, 236.577 )

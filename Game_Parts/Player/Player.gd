@@ -2,9 +2,9 @@ extends Node2D
 
 var fireData = [
 	1, # damange : 1 to 3
-	2, #range in cells - 2 to 5
-	3, #type : 1 - barrage / 2 - blast / 3 - lasor 
-	4, # particle type - 1 to 3
+	1, #range in cells - 2 to 5
+	2, #type : 1 - barrage / 2 - blast / 3 - lasor 
+	2, # particle type - 1 to 3
 	Color() # color data
 ]
 #----------------------------------------------
@@ -16,8 +16,10 @@ var validDirections = [
 	Vector2(1,0)
 ]
 
-var currentDirection = Vector2(1,0)
+var currentDirection = Vector2(0,1)
 var currentCell = Vector2()
+
+var blockInput = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	update_current_cell()
@@ -28,6 +30,8 @@ func update_current_cell():
 	currentCell = GM.currentBoard.world_to_map(global_position)
 
 func _input(event):
+	if(blockInput):
+		return
 	if(event.is_action_pressed("ui_select")):
 		$Canon.fire_canon(fireData)
 	if(event.is_action_pressed("LMB")):
@@ -50,7 +54,7 @@ func jump_to_cell(targetCell = Vector2()):
 	pass
 	
 func jump_in_direction(direction = Vector2()):
-
+	blockInput = true
 	var target = Vector2()
 	target.x = (direction.x-direction.y)*(-22)
 	target.y = (direction.x+direction.y)*(-13)
@@ -76,6 +80,7 @@ func jump_in_direction(direction = Vector2()):
 #func _process(delta):
 #	pass
 func jumpComplete():
+	blockInput = false
 	var targetPosition = $Path2D/PathFollow2D.global_position
 	$Path2D/PathFollow2D.unit_offset = 0
 	$Path2D/PathFollow2D2.unit_offset = 0
