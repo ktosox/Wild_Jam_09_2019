@@ -79,6 +79,10 @@ func jump_in_direction(direction = Vector2()):
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
+func grabToken(newFireData):
+	print("got this from token: ", newFireData)
+	pass
+
 func jumpComplete():
 	blockInput = false
 	var targetPosition = $Path2D/PathFollow2D.global_position
