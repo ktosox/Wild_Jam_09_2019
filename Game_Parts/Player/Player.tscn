@@ -145,7 +145,7 @@ tracks/4/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 11.7615, -16.1852 ) ]
+"values": [ Vector2( 14.4531, -13.2084 ) ]
 }
 
 [sub_resource type="Animation" id=5]
@@ -208,7 +208,7 @@ tracks/4/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( -9.75342, -15.5705 ) ]
+"values": [ Vector2( -13.6412, -13.3026 ) ]
 }
 
 [sub_resource type="Animation" id=6]
@@ -271,7 +271,7 @@ tracks/4/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 11.1468, -3.27625 ) ]
+"values": [ Vector2( 14.2169, 3.44875 ) ]
 }
 
 [sub_resource type="Animation" id=7]
@@ -331,10 +331,10 @@ tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0.00213634 ),
+"times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( -9.44607, -2.66154 ) ]
+"values": [ Vector2( -13.7199, 2.91912 ) ]
 }
 
 [sub_resource type="Gradient" id=8]
@@ -358,9 +358,7 @@ curve = SubResource( 3 )
 script = ExtResource( 2 )
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
-editor/display_folded = true
-position = Vector2( 14.2308, 10.5051 )
-offset = 17.1297
+position = Vector2( 0.358576, 0.455461 )
 rotate = false
 loop = false
 
@@ -377,6 +375,7 @@ scale = Vector2( 0.15, 0.15 )
 z_index = 17
 
 [node name="tank_NE" type="Sprite" parent="Path2D/PathFollow2D/Node2D"]
+visible = false
 texture = ExtResource( 4 )
 
 [node name="tank_NW" type="Sprite" parent="Path2D/PathFollow2D/Node2D"]
@@ -388,7 +387,6 @@ visible = false
 texture = ExtResource( 6 )
 
 [node name="tank_SW" type="Sprite" parent="Path2D/PathFollow2D/Node2D"]
-visible = false
 texture = ExtResource( 7 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Path2D/PathFollow2D/Node2D"]
@@ -399,8 +397,7 @@ anims/SE = SubResource( 6 )
 anims/SW = SubResource( 7 )
 
 [node name="PathFollow2D2" type="PathFollow2D" parent="Path2D"]
-position = Vector2( 14.2308, 10.5051 )
-offset = 17.1297
+position = Vector2( 0.358576, 0.455461 )
 rotate = false
 loop = false
 
@@ -411,7 +408,7 @@ scale = Vector2( 1, 0.5 )
 texture = ExtResource( 8 )
 
 [node name="Canon" parent="." instance=ExtResource( 9 )]
-position = Vector2( -9.44607, -2.66154 )
+position = Vector2( -13.7199, 2.91912 )
 z_index = 23
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
@@ -438,3 +435,7 @@ scale_amount_random = 0.55
 color_ramp = SubResource( 8 )
 hue_variation = 1.0
 hue_variation_random = 0.14
+
+[node name="TimerFireCooldown" type="Timer" parent="."]
+wait_time = 0.3
+[connection signal="timeout" from="TimerFireCooldown" to="." method="_on_TimerFireCooldown_timeout"]

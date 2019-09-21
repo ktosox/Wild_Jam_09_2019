@@ -21,4 +21,9 @@ visible = false
 anims/fire = SubResource( 1 )
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
-polygon = PoolVector2Array( 0.0678253, -3.55299, -3.28175, 0.63398, 1.21924, 3.46018, 3.20805, -0.308086 )
+color = Color( 1, 0, 0, 0.317647 )
+polygon = PoolVector2Array( -0.669641, -0.891699, -0.89999, 0.536468, 0.159616, 1.18145, 1.12708, -0.0163708, 0.343897, -0.937769 )
+
+[node name="Polygon2D2" type="Polygon2D" parent="."]
+color = Color( 1, 0, 0, 0.317647 )
+polygon = PoolVector2Array( -0.669641, -0.891699, -0.89999, 0.536468, 0.159616, 1.18145, 1.12708, -0.0163708, 0.343897, -0.937769 )

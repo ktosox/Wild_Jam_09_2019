@@ -20,6 +20,7 @@ var currentDirection = Vector2(0,1)
 var currentCell = Vector2()
 
 var blockInput = false
+var fireReady = true
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	update_current_cell()
@@ -33,7 +34,10 @@ func _input(event):
 	if(blockInput):
 		return
 	if(event.is_action_pressed("ui_select")):
-		$Canon.fire_canon(fireData)
+		if(fireReady):
+			fireReady = false
+			$TimerFireCooldown.start()
+			$Canon.fire_canon(fireData)
 	if(event.is_action_pressed("LMB")):
 		var clickedCell = GM.currentBoard.world_to_map(get_global_mouse_position())
 		if(GM.currentBoard.is_cell_valid(clickedCell)):
@@ -101,3 +105,7 @@ func jumpComplete():
 func mergColors(Color1=Color(), Color2=Color()):
 	var newColor = Color(randf(),randf(),randf())
 	return newColor
+
+func _on_TimerFireCooldown_timeout():
+	fireReady = true
+	pass # Replace with function body.
