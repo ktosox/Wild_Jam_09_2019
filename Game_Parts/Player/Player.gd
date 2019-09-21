@@ -81,6 +81,12 @@ func jump_in_direction(direction = Vector2()):
 #	pass
 func grabToken(newFireData):
 	print("got this from token: ", newFireData)
+	var pattern = [0,1,2,3]
+	pattern.remove(randi()%4)
+	pattern.remove(randi()%3)
+	fireData[pattern[0]] = newFireData[pattern[0]]
+	fireData[pattern[1]] = newFireData[pattern[1]]
+	fireData[4] = mergColors(fireData[4],newFireData[4])
 	pass
 
 func jumpComplete():
@@ -92,3 +98,6 @@ func jumpComplete():
 	update_current_cell()
 	pass
 
+func mergColors(Color1=Color(), Color2=Color()):
+	var newColor = Color(randf(),randf(),randf())
+	return newColor

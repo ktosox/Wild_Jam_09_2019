@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Game_Parts/Tokens/Token.gd" type="Script" id=1]
 [ext_resource path="res://Resources/token1.png" type="Texture" id=2]
@@ -8,7 +8,10 @@
 radius = 4.66424
 height = 4.21679
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Curve" id=2]
+_data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 0.494279, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="Animation" id=3]
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:region_rect")
 tracks/0/interp = 1
@@ -51,17 +54,22 @@ region_enabled = true
 region_rect = Rect2( 0, 0, 100, 100 )
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+position = Vector2( 0, -0.968555 )
+amount = 12
 explosiveness = 1.0
 texture = ExtResource( 3 )
-emission_shape = 1
-emission_sphere_radius = 3.0
+emission_shape = 2
+emission_rect_extents = Vector2( 5, 2 )
 spread = 180.0
 gravity = Vector2( 0, 0 )
+radial_accel = 17.21
 scale_amount = 0.1
+scale_amount_curve = SubResource( 2 )
+color = Color( 1, 1, 1, 0.576471 )
 hue_variation = -0.2
 hue_variation_random = 1.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "Spawn"
-anims/Spawn = SubResource( 2 )
+anims/Spawn = SubResource( 3 )
 [connection signal="area_entered" from="." to="." method="_on_Token_area_entered"]

@@ -12,6 +12,7 @@ offsets = PoolRealArray( 0, 0.86755 )
 colors = PoolColorArray( 1, 1, 1, 0.482353, 1, 1, 1, 0 )
 
 [sub_resource type="CircleShape2D" id=3]
+radius = 3.91809
 
 [node name="Blast" type="RigidBody2D"]
 z_index = 30

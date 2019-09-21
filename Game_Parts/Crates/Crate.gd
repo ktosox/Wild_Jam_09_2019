@@ -15,3 +15,13 @@ func fixLocation():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
+
+func getHit():
+	$AnimationPlayer.play("Damange")
+	pass
+
+
+func _on_Crate_body_entered(body):
+	getHit()
+	body.pop()
+	pass # Replace with function body.
