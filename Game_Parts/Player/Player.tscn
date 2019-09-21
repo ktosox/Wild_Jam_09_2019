@@ -145,7 +145,19 @@ tracks/4/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 14.4531, -13.2084 ) ]
+"values": [ Vector2( 16.5297, -15.7545 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("../../../Canon:rotation_degrees")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 145.0 ]
 }
 
 [sub_resource type="Animation" id=5]
@@ -208,7 +220,19 @@ tracks/4/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( -13.6412, -13.3026 ) ]
+"values": [ Vector2( -15.6923, -15.7316 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("../../../Canon:rotation_degrees")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 35.0 ]
 }
 
 [sub_resource type="Animation" id=6]
@@ -271,7 +295,19 @@ tracks/4/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 14.2169, 3.44875 ) ]
+"values": [ Vector2( 16.4243, 4.07833 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("../../../Canon:rotation_degrees")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 215.0 ]
 }
 
 [sub_resource type="Animation" id=7]
@@ -334,7 +370,19 @@ tracks/4/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( -13.7199, 2.91912 ) ]
+"values": [ Vector2( -15.7595, 4.04941 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("../../../Canon:rotation_degrees")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 325.0 ]
 }
 
 [sub_resource type="Gradient" id=8]
@@ -379,7 +427,6 @@ visible = false
 texture = ExtResource( 4 )
 
 [node name="tank_NW" type="Sprite" parent="Path2D/PathFollow2D/Node2D"]
-visible = false
 texture = ExtResource( 5 )
 
 [node name="tank_SE" type="Sprite" parent="Path2D/PathFollow2D/Node2D"]
@@ -387,6 +434,7 @@ visible = false
 texture = ExtResource( 6 )
 
 [node name="tank_SW" type="Sprite" parent="Path2D/PathFollow2D/Node2D"]
+visible = false
 texture = ExtResource( 7 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Path2D/PathFollow2D/Node2D"]
@@ -408,8 +456,9 @@ scale = Vector2( 1, 0.5 )
 texture = ExtResource( 8 )
 
 [node name="Canon" parent="." instance=ExtResource( 9 )]
-position = Vector2( -13.7199, 2.91912 )
-z_index = 23
+position = Vector2( -15.6923, -15.7316 )
+rotation = 0.610865
+z_index = 21
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
 visible = false

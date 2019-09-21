@@ -2,21 +2,24 @@ extends Node2D
 
 var blastScene = load("res://Game_Parts/Player/Blast.tscn")
 
-func fire_canon(fireArray):
-	match(fireArray[2]):
+func fire_canon(fireData):
+	$AnimationPlayer.stop()
+	$AnimationPlayer.play(String(fireData[3]))
+	match(fireData[2]):
 		1:
-			fireBarrage(fireArray)
+			fireBarrage(fireData)
 		2:
-			fireBlast(fireArray)
+			fireBlast(fireData)
 		3:
-			fireLazor(fireArray)
+			fireLazor(fireData)
 
 func fireBlast(fireData):
+
 	var blast = blastScene.instance()
 	blast.global_position=global_position
 	var direction = get_parent().currentDirection
-	blast.linear_velocity.y = (direction.x+direction.y) * (-52)
-	blast.linear_velocity.x = (direction.x-direction.y) * (-88)
+	blast.linear_velocity.y = (direction.x+direction.y) * (-65)
+	blast.linear_velocity.x = (direction.x-direction.y) * (-110)
 	blast.modulate = fireData[4]
 	get_parent().get_parent().add_child(blast)
 	pass
