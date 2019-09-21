@@ -5,6 +5,8 @@ const tileOffset = Vector2(22,13)
 # var a = 2
 # var b = "text"
 var invalidCells = [-1,9,15]
+var claimedCells = []
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -26,10 +28,22 @@ func track_mouse():
 		$selector.modulate = Color(1,0,0)
 
 func is_cell_valid(cell = Vector2()):
+	if(claimedCells.has(cell)):
+		return false
 	if(invalidCells.has(get_cellv(cell))):
 		return false
 	else:
 		return true
+
+func claimCell(place =Vector2()):
+	claimedCells.push_back(world_to_map(place))
+	print("claimed cells after claim",claimedCells)
+	pass
+
+func freeCell(place =Vector2()):
+	claimedCells.erase(world_to_map(place))
+	print("claimed cells after free",claimedCells)
+	pass
 
 func cell_to_grid(cell = Vector2()):
 	var newPosition = Vector2()

@@ -109,3 +109,10 @@ func mergColors(Color1=Color(), Color2=Color()):
 func _on_TimerFireCooldown_timeout():
 	fireReady = true
 	pass # Replace with function body.
+	
+func winGame():
+	# - make player immortal
+	# - pay a tune?
+	blockInput = true
+	pass
+

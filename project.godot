@@ -39,6 +39,7 @@ LMB={
 2d_physics/layer_5="Token"
 2d_physics/layer_6="Bullet Player"
 2d_physics/layer_7="Bullet Enemy"
+2d_physics/layer_8="Exit"
 
 [rendering]
 
