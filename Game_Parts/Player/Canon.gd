@@ -21,6 +21,7 @@ func fireBlast(fireData):
 	blast.linear_velocity.y = (direction.x+direction.y) * (-65)
 	blast.linear_velocity.x = (direction.x-direction.y) * (-110)
 	blast.modulate = fireData[4]
+	blast.lifetime = fireData[1]
 	get_parent().get_parent().add_child(blast)
 	pass
 	
@@ -29,7 +30,8 @@ func fireBarrage(fireData):
 	pass
 	
 func fireLazor(fireData):
-	print("lazor")
+	$Node2D.scale.x = fireData[1] * 0.2
+	$Node2D/AnimationPlayer.play("fire")
 	pass
 
 # Called when the node enters the scene tree for the first time.

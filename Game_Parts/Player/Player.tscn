@@ -157,7 +157,7 @@ tracks/5/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ 145.0 ]
+"values": [ 149.5 ]
 }
 
 [sub_resource type="Animation" id=5]
@@ -232,7 +232,7 @@ tracks/5/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ 35.0 ]
+"values": [ 30.5 ]
 }
 
 [sub_resource type="Animation" id=6]
@@ -307,7 +307,7 @@ tracks/5/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ 215.0 ]
+"values": [ 210.5 ]
 }
 
 [sub_resource type="Animation" id=7]
@@ -382,7 +382,7 @@ tracks/5/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ 325.0 ]
+"values": [ 329.5 ]
 }
 
 [sub_resource type="Gradient" id=8]
@@ -434,10 +434,10 @@ position = Vector2( 0, -3 )
 scale = Vector2( 0.15, 0.15 )
 
 [node name="tank_NE" type="Sprite" parent="Path2D/PathFollow2D/Node2D"]
-visible = false
 texture = ExtResource( 5 )
 
 [node name="tank_NW" type="Sprite" parent="Path2D/PathFollow2D/Node2D"]
+visible = false
 texture = ExtResource( 6 )
 
 [node name="tank_SE" type="Sprite" parent="Path2D/PathFollow2D/Node2D"]
@@ -456,8 +456,8 @@ anims/SE = SubResource( 6 )
 anims/SW = SubResource( 7 )
 
 [node name="Canon" parent="." instance=ExtResource( 9 )]
-position = Vector2( -15.6923, -15.7316 )
-rotation = 0.610865
+position = Vector2( 16.5297, -15.7545 )
+rotation = 2.60927
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
 visible = false

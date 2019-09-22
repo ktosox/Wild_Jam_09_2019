@@ -3,7 +3,7 @@ extends Node2D
 var fireData = [
 	1, # damange : 1 to 3
 	1, #range in cells - 2 to 5
-	2, #type : 1 - barrage / 2 - blast / 3 - lasor 
+	3, #type : 1 - barrage / 2 - blast / 3 - lasor 
 	2, # particle type - 1 to 3
 	Color() # color data
 ]
