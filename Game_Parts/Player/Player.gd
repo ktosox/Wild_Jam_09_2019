@@ -29,6 +29,7 @@ func _ready():
 
 func update_current_cell():
 	currentCell = GM.currentBoard.world_to_map(global_position)
+	z_index=GM.currentBoard.world_to_map(global_position).x+GM.currentBoard.world_to_map(global_position).y
 
 func _input(event):
 	if(blockInput):

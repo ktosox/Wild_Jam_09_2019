@@ -13,17 +13,18 @@ tile_data = PoolIntArray( -327665, 21, 0, -327664, 21, 0, -327663, 21, 0, -32766
 [node name="Player" parent="." instance=ExtResource( 2 )]
 position = Vector2( 261.731, 352.001 )
 
-[node name="Crate" parent="." instance=ExtResource( 3 )]
-position = Vector2( 385.229, 293.948 )
+[node name="Crate3" parent="." instance=ExtResource( 3 )]
+position = Vector2( 376.681, 288.865 )
 
-[node name="Crate2" parent="." instance=ExtResource( 3 )]
-position = Vector2( 575.876, 402.889 )
+[node name="Crate" parent="." instance=ExtResource( 3 )]
+position = Vector2( 354.355, 277.776 )
+z_index = 2
 
 [node name="Crate4" parent="." instance=ExtResource( 3 )]
 position = Vector2( 553.529, 235.986 )
 
-[node name="Crate3" parent="." instance=ExtResource( 3 )]
-position = Vector2( 419.448, 389.621 )
+[node name="Crate2" parent="." instance=ExtResource( 3 )]
+position = Vector2( 575.876, 402.889 )
 
 [node name="Exit" parent="." instance=ExtResource( 4 )]
 position = Vector2( 524.101, 324.655 )
