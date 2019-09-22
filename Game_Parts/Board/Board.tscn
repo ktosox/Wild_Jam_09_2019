@@ -364,7 +364,7 @@ tracks/0/keys = {
 }
 
 [sub_resource type="Animation" id=3]
-length = 1.6
+length = 2.3
 tracks/0/type = "value"
 tracks/0/path = NodePath("square_white_2048x2048:position")
 tracks/0/interp = 1
@@ -376,6 +376,20 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Vector2( 148.101, -1092.05 ), Vector2( 665.713, 931.746 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 2.2 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "changeLevel"
+} ]
 }
 
 [node name="Board" type="TileMap"]

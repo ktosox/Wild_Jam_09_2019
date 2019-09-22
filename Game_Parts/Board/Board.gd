@@ -65,3 +65,11 @@ func updateInterface(fireData = []):
 	$Camera2D/Interface/rnge.setValue(String(fireData[1]))
 	$Camera2D/Interface/ammo.setValue(String(fireData[3]))
 	pass
+func endLevel():
+	$Camera2D/Interface.visible = false
+	$AnimationPlayer.play("trans_out")
+	pass
+
+func changeLevel():
+	GM.switchLevel()
+	pass

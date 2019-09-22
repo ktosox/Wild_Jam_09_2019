@@ -62,6 +62,19 @@ func win_game(caller):
 	#called by Game scene upon player reaching objective
 	pass
 	
+func switchLevel():
+	currentLevel += 1
+	match(currentLevel):
+		2:
+			get_tree().change_scene("res://Levels/2.tscn")
+		3:
+			get_tree().change_scene("res://Levels/3.tscn")
+		4:
+			get_tree().change_scene("res://Levels/4.tscn")
+		5:
+			get_tree().change_scene("res://Levels/5.tscn")
+	
+	
 func end_program():
 	get_tree().quit()
 	pass

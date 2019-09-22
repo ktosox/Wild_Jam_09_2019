@@ -22,4 +22,5 @@ func fixLocation():
 func _on_Exit_area_entered(area):
 	$AnimationPlayer.play("active")
 	area.winGame()
+	GM.currentBoard.endLevel()
 	pass # Replace with function body.
