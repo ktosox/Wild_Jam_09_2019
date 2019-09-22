@@ -37,12 +37,12 @@ func is_cell_valid(cell = Vector2()):
 
 func claimCell(place =Vector2()):
 	claimedCells.push_back(world_to_map(place))
-	print("claimed cells after claim",claimedCells)
+	#print("claimed cells after claim",claimedCells)
 	pass
 
 func freeCell(place =Vector2()):
 	claimedCells.erase(world_to_map(place))
-	print("claimed cells after free",claimedCells)
+	#print("claimed cells after free",claimedCells)
 	pass
 
 func cell_to_grid(cell = Vector2()):
@@ -59,7 +59,9 @@ func global_to_grid(position = Vector2()):
 	newPosition.y = (cellPosition.x+cellPosition.y+1)*13
 	return newPosition
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _physics_process(delta):
-	
-	
+func updateInterface(fireData = []):
+	$Camera2D/Interface/power.setValue(String(fireData[0]))
+	$Camera2D/Interface/type.setValue(String(fireData[2]))
+	$Camera2D/Interface/rnge.setValue(String(fireData[1]))
+	$Camera2D/Interface/ammo.setValue(String(fireData[3]))
 	pass

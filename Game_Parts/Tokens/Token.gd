@@ -19,7 +19,7 @@ func random_fire_data():
 	fireData[0] = (randi()%3)+1
 	fireData[1] = (randi()%4)+2
 	fireData[2] = (randi()%3)+1
-	fireData[3] = (randi()%3)+1
+	fireData[3] = (randi()%9)+7 - fireData[0]
 	fireData[4] = Color(randf(),randf(),randf(),1.0)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

@@ -3,8 +3,6 @@ extends Node2D
 var blastScene = load("res://Game_Parts/Player/Blast.tscn")
 
 func fire_canon(fireData):
-	$AnimationPlayer.stop()
-	$AnimationPlayer.play(String(fireData[3]))
 	match(fireData[2]):
 		1:
 			fireBarrage(fireData)
@@ -30,6 +28,7 @@ func fireBarrage(fireData):
 	pass
 	
 func fireLazor(fireData):
+	$Node2D.modulate=fireData[4]
 	$Node2D.scale.x = fireData[1] * 0.2
 	$Node2D/AnimationPlayer.play("fire")
 	pass

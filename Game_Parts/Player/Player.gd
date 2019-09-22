@@ -4,8 +4,8 @@ var fireData = [
 	1, # damange : 1 to 3
 	1, #range in cells - 2 to 5
 	3, #type : 1 - barrage / 2 - blast / 3 - lasor 
-	2, # particle type - 1 to 3
-	Color() # color data
+	2, # reused for ammo
+	Color(randf(),randf(),randf()) # color data
 ]
 #----------------------------------------------
 
@@ -25,6 +25,7 @@ var fireReady = true
 func _ready():
 	update_current_cell()
 	fixLocation()
+	GM.currentBoard.updateInterface(fireData)
 	pass # Replace with function body.
 
 func update_current_cell():
@@ -35,10 +36,12 @@ func _input(event):
 	if(blockInput):
 		return
 	if(event.is_action_pressed("ui_select")):
-		if(fireReady):
+		if(fireReady and fireData[3]>0):
 			fireReady = false
 			$TimerFireCooldown.start()
 			$Canon.fire_canon(fireData)
+			fireData[3] -= 1
+			GM.currentBoard.updateInterface(fireData)
 	if(event.is_action_pressed("LMB")):
 		var clickedCell = GM.currentBoard.world_to_map(get_global_mouse_position())
 		if(GM.currentBoard.is_cell_valid(clickedCell)):
@@ -86,12 +89,13 @@ func jump_in_direction(direction = Vector2()):
 #	pass
 func grabToken(newFireData):
 	print("got this from token: ", newFireData)
-	var pattern = [0,1,2,3]
-	pattern.remove(randi()%4)
+	var pattern = [0,1,2]
 	pattern.remove(randi()%3)
 	fireData[pattern[0]] = newFireData[pattern[0]]
 	fireData[pattern[1]] = newFireData[pattern[1]]
+	fireData[3] = newFireData[3]
 	fireData[4] = mergColors(fireData[4],newFireData[4])
+	GM.currentBoard.updateInterface(fireData)
 	pass
 
 func jumpComplete():
@@ -104,7 +108,23 @@ func jumpComplete():
 	pass
 
 func mergColors(Color1=Color(), Color2=Color()):
-	var newColor = Color(randf(),randf(),randf())
+	var newColor = Color()
+	match (randi()%3):
+		0:
+			newColor.r=Color1.r
+			newColor.r=Color2.b
+			newColor.g=(Color1.g + Color2.g)/2.0
+		1:
+			newColor.r=Color2.r
+			newColor.g=Color1.g
+			newColor.b=(Color1.b + Color2.b)/2.0
+			
+		2:
+			newColor.g=Color1.g
+			newColor.b=Color2.b
+			newColor.r=(Color1.r + Color2.r)/2.0
+			
+
 	return newColor
 
 func _on_TimerFireCooldown_timeout():
