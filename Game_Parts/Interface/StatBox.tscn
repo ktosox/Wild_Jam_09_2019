@@ -28,9 +28,9 @@ valign = 1
 
 [node name="Value" type="Label" parent="CenterContainer"]
 margin_left = 62.0
-margin_top = 39.0
+margin_top = 41.0
 margin_right = 86.0
-margin_bottom = 101.0
+margin_bottom = 99.0
 custom_fonts/font = ExtResource( 3 )
 text = "0"
 align = 1

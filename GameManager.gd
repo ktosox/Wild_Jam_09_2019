@@ -25,7 +25,7 @@ var gamePath = "res://Key_Scenes/Game/Game.tscn"
 
 var pauseMenuScene = load("res://Game_Parts/PauseMenu/PauseMenu.tscn")
 
-var gameOverMenuScene = load("res://Game_Parts/GameOverMenu/GameOverMenu.tscn")
+var gameOverMenuScene = load("res://Key_Scenes/GameOverMenu/GameOverMenu.tscn")
 
 func _ready():
 
@@ -64,16 +64,28 @@ func win_game(caller):
 	
 func switchLevel():
 	currentLevel += 1
-	match(currentLevel):
-		2:
-			get_tree().change_scene("res://Levels/2.tscn")
-		3:
-			get_tree().change_scene("res://Levels/3.tscn")
-		4:
-			get_tree().change_scene("res://Levels/4.tscn")
-		5:
-			get_tree().change_scene("res://Levels/5.tscn")
-	
+	resetLevel()
+
+func resetLevel():
+		match(currentLevel):
+			1:
+				get_tree().change_scene("res://Levels/1.tscn")
+			2:
+				get_tree().change_scene("res://Levels/2.tscn")
+			3:
+				get_tree().change_scene("res://Levels/3.tscn")
+			4:
+				get_tree().change_scene("res://Levels/4.tscn")
+			5:
+				get_tree().change_scene("res://Levels/5.tscn")
+			6:
+				get_tree().change_scene("res://Levels/6.tscn")
+			7:
+				get_tree().change_scene("res://Levels/7.tscn")
+			8:
+				get_tree().change_scene("res://Levels/8.tscn")
+			9:
+				get_tree().change_scene("res://Levels/9.tscn")
 	
 func end_program():
 	get_tree().quit()

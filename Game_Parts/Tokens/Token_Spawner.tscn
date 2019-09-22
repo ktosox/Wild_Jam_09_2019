@@ -1,0 +1,45 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Game_Parts/Tokens/Token_Spawner.gd" type="Script" id=1]
+[ext_resource path="res://Resources/exit.png" type="Texture" id=2]
+[ext_resource path="res://Resources/nest1.png" type="Texture" id=3]
+
+[sub_resource type="Animation" id=1]
+resource_name = "idle"
+length = 5.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.8, 1.6, 2.7, 3.5, 5 ),
+"transitions": PoolRealArray( 1, 1, -2, 1, 2, 1 ),
+"update": 0,
+"values": [ Color( 0.0862745, 1, 0.937255, 1 ), Color( 0.0862745, 1, 0.937255, 0.0862745 ), Color( 0.0862745, 1, 0.937255, 0.72549 ), Color( 0.0862745, 1, 0.937255, 0.0352941 ), Color( 0.0862745, 1, 0.937255, 0.329412 ), Color( 0.0862745, 1, 0.937255, 1 ) ]
+}
+
+[node name="Token_Spawner" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="exit" type="Sprite" parent="."]
+modulate = Color( 0, 0.141176, 0.309804, 1 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 2 )
+
+[node name="nest1" type="Sprite" parent="."]
+modulate = Color( 0.0862745, 1, 0.937255, 0.354413 )
+position = Vector2( 0, -4 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 3 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="nest1"]
+autoplay = "idle"
+anims/idle = SubResource( 1 )
+
+[node name="TimerCooldown" type="Timer" parent="."]
+wait_time = 20.0
+one_shot = true
+[connection signal="timeout" from="TimerCooldown" to="." method="_on_TimerCooldown_timeout"]

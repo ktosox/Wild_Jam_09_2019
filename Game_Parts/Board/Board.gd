@@ -6,11 +6,19 @@ const tileOffset = Vector2(22,13)
 # var b = "text"
 var invalidCells = [-1,9,15]
 var claimedCells = []
+var listedSpawns = []
 
+
+
+func damange():
+	$Camera2D/Interface/NinePatchRect/HP.value -=1
+	if($Camera2D/Interface/NinePatchRect/HP.value == 0):
+		GM.lose_game()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	GM.currentBoard = self
+	GM.currentCamera = $Camera2D
 	pass # Replace with function body.
 
 func _input(event):
@@ -38,6 +46,14 @@ func is_cell_valid(cell = Vector2()):
 func claimCell(place =Vector2()):
 	claimedCells.push_back(world_to_map(place))
 	#print("claimed cells after claim",claimedCells)
+	pass
+
+func addSpawn(spawn):
+	listedSpawns.push_back(spawn)
+	pass
+
+func getSpawn():
+	return listedSpawns[randi()%listedSpawns.size()]
 	pass
 
 func freeCell(place =Vector2()):

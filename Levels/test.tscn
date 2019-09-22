@@ -1,37 +1,52 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Game_Parts/Board/Board.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Game_Parts/Tokens/Token.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Game_Parts/Player/Player.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Resources/zeppelin.png" type="Texture" id=4]
-[ext_resource path="res://Game_Parts/Crates/Crate.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Game_Parts/Player/Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Resources/zeppelin.png" type="Texture" id=3]
+[ext_resource path="res://Game_Parts/Crates/Crate.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Game_Parts/Tokens/Token_Spawner.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Game_Parts/Enemy/SpawnPoint.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Game_Parts/Enemy/ZapBoy.tscn" type="PackedScene" id=7]
 
 [node name="test" type="Node2D"]
 
 [node name="Board" parent="." instance=ExtResource( 1 )]
 tile_data = PoolIntArray( -1769488, 5, 0, -1703952, 5, 0, -1703951, 5, 0, -1638415, 5, 0, -1638414, 5, 0, -1638413, 5, 0, -1572878, 5, 0, -1572877, 5, 0, -1572876, 5, 0, -1572875, 5, 0, -1507341, 5, 0, -1507339, 5, 0, -1507338, 5, 0, -1441804, 5, 0, -1441803, 5, 0, -1441802, 5, 0, -1441801, 5, 0, -1376266, 5, 0, -1376265, 5, 0, -1310729, 5, 0, 65555, 7, 0, 65556, 7, 0, 65557, 7, 0, 65558, 7, 0, 131091, 9, 0, 131092, 9, 0, 131093, 9, 0, 131094, 9, 0, 131095, 8, 0, 131096, 8, 0, 196626, 7, 0, 196627, 9, 0, 196628, 9, 0, 196629, 9, 0, 196630, 9, 0, 196631, 8, 0, 196632, 8, 0, 262161, 7, 0, 262162, 7, 0, 262163, 6, 0, 262164, 6, 0, 262165, 7, 0, 262166, 6, 0, 262167, 7, 0, 262168, 7, 0, 262169, 7, 0, 327696, 7, 0, 327697, 7, 0, 327698, 7, 0, 327699, 21, 0, 327700, 6, 0, 327701, 6, 0, 327702, 6, 0, 327703, 6, 0, 327704, 6, 0, 327705, 7, 0, 327706, 7, 0, 393232, 7, 0, 393233, 7, 0, 393234, 21, 0, 393235, 21, 0, 393236, 15, 0, 393237, 15, 0, 393238, 15, 0, 393239, 6, 0, 393240, 6, 0, 393241, 7, 0, 393242, 7, 0, 458768, 7, 0, 458769, 7, 0, 458770, 21, 0, 458771, 21, 0, 458772, 15, 0, 458773, 15, 0, 458774, 15, 0, 458775, 6, 0, 458776, 7, 0, 458777, 7, 0, 458778, 7, 0, 524304, 7, 0, 524305, 7, 0, 524306, 21, 0, 524307, 21, 0, 524308, 6, 0, 524309, 6, 0, 524310, 6, 0, 524311, 6, 0, 524312, 7, 0, 524313, 7, 0, 524314, 7, 0, 589842, 25, 0, 589843, 25, 0, 589844, 6, 0, 589845, 6, 0, 589846, 6, 0, 589847, 6, 0, 589848, 7, 0, 589849, 7, 0, 655378, 25, 0, 655379, 25, 0, 655380, 7, 0, 655381, 7, 0, 655382, 7, 0, 655383, 7, 0, 655384, 7, 0, 720915, 7, 0, 720916, 7, 0, 720917, 7, 0, 720918, 7, 0, 720919, 7, 0, 786452, 7, 0, 786453, 7, 0, 786454, 7, 0 )
 
-[node name="Token" parent="." instance=ExtResource( 2 )]
-position = Vector2( 262.712, 406.297 )
-
-[node name="Token2" parent="." instance=ExtResource( 2 )]
-position = Vector2( 217.807, 429.316 )
-
-[node name="Token3" parent="." instance=ExtResource( 2 )]
-position = Vector2( 333.655, 445.542 )
-
-[node name="Player" parent="." instance=ExtResource( 3 )]
+[node name="Player" parent="." instance=ExtResource( 2 )]
 position = Vector2( 352.255, 403.56 )
 
 [node name="zeppelin" type="Sprite" parent="."]
+visible = false
 position = Vector2( 304.978, 236.577 )
-texture = ExtResource( 4 )
+texture = ExtResource( 3 )
 
-[node name="Crate" parent="." instance=ExtResource( 5 )]
-position = Vector2( 413.035, 390.273 )
+[node name="Crate" parent="." instance=ExtResource( 4 )]
+position = Vector2( 415.623, 419.068 )
 
-[node name="Crate2" parent="." instance=ExtResource( 5 )]
-position = Vector2( 437.74, 405.224 )
+[node name="Crate2" parent="." instance=ExtResource( 4 )]
+position = Vector2( 396.651, 430.136 )
 
-[node name="Crate3" parent="." instance=ExtResource( 5 )]
-position = Vector2( 473.524, 415.903 )
+[node name="Crate3" parent="." instance=ExtResource( 4 )]
+position = Vector2( 446.347, 403.609 )
+
+[node name="Token_Spawner" parent="." instance=ExtResource( 5 )]
+position = Vector2( 284.925, 441.944 )
+
+[node name="Token_Spawner2" parent="." instance=ExtResource( 5 )]
+position = Vector2( 307.152, 402.869 )
+
+[node name="Token_Spawner3" parent="." instance=ExtResource( 5 )]
+position = Vector2( 240.115, 416.133 )
+
+[node name="SpawnPoint" parent="." instance=ExtResource( 6 )]
+position = Vector2( 265.509, 348.191 )
+
+[node name="SpawnPoint2" parent="." instance=ExtResource( 6 )]
+position = Vector2( 264.539, 323.279 )
+
+[node name="SpawnPoint3" parent="." instance=ExtResource( 6 )]
+position = Vector2( 220.215, 348.191 )
+
+[node name="ZapBoy" parent="." instance=ExtResource( 7 )]
+position = Vector2( 242.602, 389.562 )

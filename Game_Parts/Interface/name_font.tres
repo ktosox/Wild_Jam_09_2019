@@ -5,5 +5,5 @@
 [resource]
 size = 20
 use_filter = true
-extra_spacing_top = -40
+extra_spacing_top = -32
 font_data = ExtResource( 1 )

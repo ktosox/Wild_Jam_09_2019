@@ -1,85 +1,176 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Game_Parts/Board/Board.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Game_Parts/Player/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Game_Parts/Crates/Crate.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Game_Parts/Portals/Exit.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Game_Parts/Tokens/Token_Spawner.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Game_Parts/Enemy/ZapBoy.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Game_Parts/Enemy/SpawnPoint.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Game_Parts/Enemy/Zappy.tscn" type="PackedScene" id=8]
 
-[node name="Level4-Water Maze" type="Node2D"]
+[node name="Level5 - Under Construction" type="Node2D"]
 
 [node name="Board" parent="." instance=ExtResource( 1 )]
-tile_data = PoolIntArray( -327666, 7, 0, -327665, 7, 0, -327664, 7, 0, -327663, 7, 0, -327662, 7, 0, -327661, 7, 0, -327660, 7, 0, -327659, 7, 0, -327658, 7, 0, -327657, 7, 0, -327656, 7, 0, -327655, 7, 0, -327654, 7, 0, -327653, 7, 0, -327652, 7, 0, -262131, 7, 0, -262130, 7, 0, -262129, 15, 0, -262128, 15, 0, -262127, 15, 0, -262126, 15, 0, -262125, 15, 0, -262124, 15, 0, -262123, 15, 0, -262122, 15, 0, -262121, 15, 0, -262120, 15, 0, -262119, 15, 0, -262118, 7, 0, -262117, 15, 0, -262116, 7, 0, -196595, 7, 0, -196594, 15, 0, -196593, 15, 0, -196592, 7, 0, -196591, 7, 0, -196590, 7, 0, -196589, 7, 0, -196588, 7, 0, -196587, 7, 0, -196586, 7, 0, -196585, 7, 0, -196584, 7, 0, -196583, 7, 0, -196582, 7, 0, -196581, 15, 0, -196580, 7, 0, -131061, 7, 0, -131060, 7, 0, -131059, 7, 0, -131058, 15, 0, -131057, 15, 0, -131056, 7, 0, -131055, 15, 0, -131054, 15, 0, -131053, 15, 0, -131052, 15, 0, -131051, 15, 0, -131050, 15, 0, -131049, 15, 0, -131048, 15, 0, -131047, 15, 0, -131046, 7, 0, -131045, 7, 0, -131044, 7, 0, -65525, 7, 0, -65524, 15, 0, -65523, 7, 0, -65522, 7, 0, -65521, 7, 0, -65520, 7, 0, -65519, 15, 0, -65518, 7, 0, -65517, 7, 0, -65516, 7, 0, -65515, 7, 0, -65514, 7, 0, -65513, 7, 0, -65512, 15, 0, -65511, 15, 0, -65510, 7, 0, -65509, 15, 0, -65508, 7, 0, 11, 7, 0, 12, 15, 0, 13, 15, 0, 14, 15, 0, 15, 15, 0, 16, 7, 0, 17, 15, 0, 18, 15, 0, 19, 15, 0, 20, 15, 0, 21, 15, 0, 22, 15, 0, 23, 7, 0, 24, 15, 0, 25, 15, 0, 26, 7, 0, 27, 15, 0, 28, 7, 0, 65547, 7, 0, 65548, 15, 0, 65549, 15, 0, 65550, 15, 0, 65551, 15, 0, 65552, 7, 0, 65553, 7, 0, 65554, 7, 0, 65555, 7, 0, 65556, 7, 0, 65557, 7, 0, 65558, 7, 0, 65559, 7, 0, 65560, 15, 0, 65561, 15, 0, 65562, 7, 0, 65563, 15, 0, 65564, 7, 0, 65565, 7, 0, 65566, 7, 0, 65567, 7, 0, 65568, 7, 0, 131079, 7, 0, 131080, 7, 0, 131081, 7, 0, 131082, 7, 0, 131083, 7, 0, 131084, 7, 0, 131085, 7, 0, 131086, 15, 0, 131087, 15, 0, 131088, 15, 0, 131089, 15, 0, 131090, 15, 0, 131091, 15, 0, 131092, 15, 0, 131093, 15, 0, 131094, 15, 0, 131095, 7, 0, 131096, 15, 0, 131097, 15, 0, 131098, 7, 0, 131099, 15, 0, 131100, 15, 0, 131101, 15, 0, 131102, 15, 0, 131103, 15, 0, 131104, 7, 0, 196614, 7, 0, 196615, 7, 0, 196616, 15, 0, 196617, 15, 0, 196618, 15, 0, 196619, 15, 0, 196620, 15, 0, 196621, 7, 0, 196622, 7, 0, 196623, 7, 0, 196624, 7, 0, 196625, 7, 0, 196626, 7, 0, 196627, 7, 0, 196628, 7, 0, 196629, 7, 0, 196630, 15, 0, 196631, 7, 0, 196632, 15, 0, 196633, 15, 0, 196634, 7, 0, 196635, 7, 0, 196636, 7, 0, 196637, 7, 0, 196638, 7, 0, 196639, 15, 0, 196640, 7, 0, 262150, 7, 0, 262151, 15, 0, 262152, 7, 0, 262153, 7, 0, 262154, 7, 0, 262155, 7, 0, 262156, 15, 0, 262157, 15, 0, 262158, 15, 0, 262159, 7, 0, 262160, 15, 0, 262161, 15, 0, 262162, 15, 0, 262163, 15, 0, 262164, 15, 0, 262165, 7, 0, 262166, 15, 0, 262167, 7, 0, 262168, 15, 0, 262169, 15, 0, 262170, 15, 0, 262171, 15, 0, 262172, 15, 0, 262173, 15, 0, 262174, 7, 0, 262175, 15, 0, 262176, 7, 0, 327687, 7, 0, 327688, 15, 0, 327689, 15, 0, 327690, 15, 0, 327691, 7, 0, 327692, 15, 0, 327693, 15, 0, 327694, 15, 0, 327695, 7, 0, 327696, 7, 0, 327697, 7, 0, 327698, 7, 0, 327699, 7, 0, 327700, 15, 0, 327701, 7, 0, 327702, 15, 0, 327703, 7, 0, 327704, 15, 0, 327705, 15, 0, 327706, 15, 0, 327707, 15, 0, 327708, 15, 0, 327709, 15, 0, 327710, 7, 0, 327711, 15, 0, 327712, 7, 0, 393224, 7, 0, 393225, 7, 0, 393226, 7, 0, 393227, 7, 0, 393228, 15, 0, 393229, 15, 0, 393230, 15, 0, 393231, 7, 0, 393232, 15, 0, 393233, 15, 0, 393234, 15, 0, 393235, 7, 0, 393236, 15, 0, 393237, 7, 0, 393238, 15, 0, 393239, 7, 0, 393240, 15, 0, 393241, 15, 0, 393242, 7, 0, 393243, 7, 0, 393244, 7, 0, 393245, 7, 0, 393246, 7, 0, 393247, 15, 0, 393248, 7, 0, 458763, 7, 0, 458764, 15, 0, 458765, 15, 0, 458766, 15, 0, 458767, 7, 0, 458768, 15, 0, 458769, 7, 0, 458770, 15, 0, 458771, 7, 0, 458772, 15, 0, 458773, 7, 0, 458774, 15, 0, 458775, 7, 0, 458776, 15, 0, 458777, 15, 0, 458778, 7, 0, 458779, 15, 0, 458780, 15, 0, 458781, 15, 0, 458782, 15, 0, 458783, 7, 0, 458784, 7, 0, 524299, 7, 0, 524300, 7, 0, 524301, 7, 0, 524302, 7, 0, 524303, 7, 0, 524304, 15, 0, 524305, 7, 0, 524306, 15, 0, 524307, 7, 0, 524308, 15, 0, 524309, 7, 0, 524310, 15, 0, 524311, 7, 0, 524312, 15, 0, 524313, 15, 0, 524314, 15, 0, 524315, 7, 0, 524316, 7, 0, 524317, 7, 0, 524318, 7, 0, 524319, 7, 0, 589839, 7, 0, 589840, 15, 0, 589841, 7, 0, 589842, 7, 0, 589843, 7, 0, 589844, 7, 0, 589845, 7, 0, 589846, 15, 0, 589847, 7, 0, 589848, 15, 0, 589849, 15, 0, 589850, 15, 0, 589851, 7, 0, 655375, 7, 0, 655376, 15, 0, 655377, 7, 0, 655378, 15, 0, 655379, 15, 0, 655380, 15, 0, 655381, 7, 0, 655382, 15, 0, 655383, 7, 0, 655384, 15, 0, 655385, 15, 0, 655386, 15, 0, 655387, 7, 0, 720911, 7, 0, 720912, 15, 0, 720913, 7, 0, 720914, 7, 0, 720915, 7, 0, 720916, 7, 0, 720917, 7, 0, 720918, 15, 0, 720919, 7, 0, 720920, 7, 0, 720921, 7, 0, 720922, 7, 0, 720923, 7, 0, 786447, 7, 0, 786448, 15, 0, 786449, 15, 0, 786450, 15, 0, 786451, 15, 0, 786452, 15, 0, 786453, 15, 0, 786454, 15, 0, 786455, 7, 0, 851983, 7, 0, 851984, 7, 0, 851985, 7, 0, 851986, 7, 0, 851987, 7, 0, 851988, 7, 0, 851989, 7, 0, 851990, 7, 0, 851991, 7, 0 )
+tile_data = PoolIntArray( -524267, 20, 0, -524266, 20, 0, -524265, 20, 0, -458731, 20, 0, -458730, 20, 0, -458729, 20, 0, -393195, 20, 0, -393194, 20, 0, -393193, 20, 0, -327658, 20, 0, -262122, 20, 0, -196594, 20, 0, -196593, 20, 0, -196592, 20, 0, -196588, 20, 0, -196587, 20, 0, -196586, 20, 0, -196585, 20, 0, -131058, 20, 0, -131057, 4, 0, -131056, 20, 0, -131052, 20, 0, -131051, 20, 0, -131050, 20, 0, -131049, 20, 0, -131045, 20, 0, -131044, 20, 0, -131043, 20, 0, -131042, 20, 0, -131041, 20, 0, -65522, 20, 0, -65521, 20, 0, -65520, 20, 0, -65516, 20, 0, -65515, 20, 0, -65514, 20, 0, -65513, 20, 0, -65512, 20, 0, -65511, 20, 0, -65510, 20, 0, -65509, 20, 0, -65508, 20, 0, -65507, 20, 0, -65506, 4, 0, -65505, 20, 0, 15, 20, 0, 20, 20, 0, 21, 20, 0, 22, 20, 0, 23, 20, 0, 27, 20, 0, 28, 20, 0, 29, 20, 0, 30, 20, 0, 31, 20, 0, 65551, 20, 0, 65564, 20, 0, 131087, 20, 0, 131088, 20, 0, 131089, 20, 0, 131093, 20, 0, 131094, 20, 0, 131095, 20, 0, 131096, 20, 0, 131100, 20, 0, 196618, 4, 0, 196623, 20, 0, 196624, 20, 0, 196625, 20, 0, 196629, 20, 0, 196630, 20, 0, 196631, 20, 0, 196632, 20, 0, 196636, 20, 0, 262153, 4, 0, 262154, 4, 0, 262155, 4, 0, 262156, 20, 0, 262157, 20, 0, 262158, 20, 0, 262159, 20, 0, 262160, 20, 0, 262161, 20, 0, 262165, 20, 0, 262166, 20, 0, 262167, 20, 0, 262168, 20, 0, 262172, 20, 0, 327690, 4, 0, 327695, 20, 0, 327696, 20, 0, 327697, 20, 0, 327698, 20, 0, 327699, 20, 0, 327700, 20, 0, 327701, 20, 0, 327702, 20, 0, 327703, 20, 0, 327704, 20, 0, 327708, 20, 0, 393231, 20, 0, 393232, 20, 0, 393233, 20, 0, 393237, 20, 0, 393238, 20, 0, 393239, 20, 0, 393240, 20, 0, 393241, 20, 0, 393242, 20, 0, 393243, 20, 0, 393244, 20, 0, 458767, 20, 0, 458768, 20, 0, 458769, 20, 0, 458773, 20, 0, 458774, 20, 0, 458775, 20, 0, 458776, 20, 0, 524303, 20, 0, 524304, 4, 0, 524305, 20, 0, 524309, 20, 0, 524310, 20, 0, 524311, 20, 0, 524312, 20, 0, 589839, 20, 0, 589840, 20, 0, 589841, 20, 0 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
-position = Vector2( 218.67, 374.286 )
-
-[node name="Crate" parent="." instance=ExtResource( 3 )]
-position = Vector2( 283.245, 340.143 )
-z_index = 2
+position = Vector2( 129.604, 192.488 )
 
 [node name="Crate2" parent="." instance=ExtResource( 3 )]
-position = Vector2( 131.08, 300.448 )
+position = Vector2( 309.14, 326.641 )
 z_index = 2
 
 [node name="Crate3" parent="." instance=ExtResource( 3 )]
-position = Vector2( 242.079, 235.025 )
-z_index = 2
-
-[node name="Crate4" parent="." instance=ExtResource( 3 )]
-position = Vector2( 109.763, 418.063 )
-z_index = 2
-
-[node name="Crate5" parent="." instance=ExtResource( 3 )]
-position = Vector2( 353.814, 351.169 )
-z_index = 2
-
-[node name="Crate6" parent="." instance=ExtResource( 3 )]
-position = Vector2( 308.238, 430.56 )
+position = Vector2( 329.14, 336.325 )
 z_index = 2
 
 [node name="Crate7" parent="." instance=ExtResource( 3 )]
-position = Vector2( 310.443, 482.751 )
+position = Vector2( 549.14, 313.641 )
 z_index = 2
 
 [node name="Crate8" parent="." instance=ExtResource( 3 )]
-position = Vector2( 486.866, 510.685 )
+position = Vector2( 569.14, 326.325 )
 z_index = 2
 
 [node name="Crate9" parent="." instance=ExtResource( 3 )]
-position = Vector2( 500.832, 313.68 )
+position = Vector2( 594.14, 339.325 )
 z_index = 2
 
 [node name="Crate10" parent="." instance=ExtResource( 3 )]
-position = Vector2( 309.708, 169.601 )
+position = Vector2( 569.14, 246.325 )
 z_index = 2
 
 [node name="Crate11" parent="." instance=ExtResource( 3 )]
-position = Vector2( 86.2397, 221.058 )
+position = Vector2( 594.14, 232.325 )
 z_index = 2
 
 [node name="Crate12" parent="." instance=ExtResource( 3 )]
-position = Vector2( 198.709, 180.628 )
+position = Vector2( 351.172, 377.022 )
 z_index = 2
 
 [node name="Crate13" parent="." instance=ExtResource( 3 )]
-position = Vector2( 527.296, 194.595 )
+position = Vector2( 372.064, 389.402 )
 z_index = 2
 
 [node name="Crate14" parent="." instance=ExtResource( 3 )]
-position = Vector2( 616.242, 323.971 )
+position = Vector2( 372.838, 363.868 )
 z_index = 2
 
 [node name="Crate15" parent="." instance=ExtResource( 3 )]
-position = Vector2( 460.402, 210.031 )
+position = Vector2( 392.182, 351.487 )
 z_index = 2
 
 [node name="Crate16" parent="." instance=ExtResource( 3 )]
-position = Vector2( 551.554, 418.063 )
+position = Vector2( 392.956, 377.022 )
 z_index = 2
 
 [node name="Crate17" parent="." instance=ExtResource( 3 )]
-position = Vector2( 638.295, 415.858 )
+position = Vector2( 415.396, 364.641 )
+z_index = 2
+
+[node name="Crate18" parent="." instance=ExtResource( 3 )]
+position = Vector2( 352.719, 403.33 )
+z_index = 2
+
+[node name="Crate19" parent="." instance=ExtResource( 3 )]
+position = Vector2( 331.827, 390.95 )
+z_index = 2
+
+[node name="Crate20" parent="." instance=ExtResource( 3 )]
+position = Vector2( 416.17, 339.88 )
+z_index = 2
+
+[node name="Crate21" parent="." instance=ExtResource( 3 )]
+position = Vector2( 437.836, 352.261 )
+z_index = 2
+
+[node name="Crate22" parent="." instance=ExtResource( 3 )]
+position = Vector2( 222.724, 274.109 )
+z_index = 2
+
+[node name="Crate25" parent="." instance=ExtResource( 3 )]
+position = Vector2( 243.616, 286.489 )
+z_index = 2
+
+[node name="Crate26" parent="." instance=ExtResource( 3 )]
+position = Vector2( 262.961, 274.109 )
+z_index = 2
+
+[node name="Crate27" parent="." instance=ExtResource( 3 )]
+position = Vector2( 286.174, 260.181 )
+z_index = 2
+
+[node name="Crate28" parent="." instance=ExtResource( 3 )]
+position = Vector2( 508.25, 285.878 )
+z_index = 2
+
+[node name="Crate29" parent="." instance=ExtResource( 3 )]
+position = Vector2( 488.416, 298.707 )
+z_index = 2
+
+[node name="Crate32" parent="." instance=ExtResource( 3 )]
+position = Vector2( 527.594, 274.109 )
+z_index = 2
+
+[node name="Crate33" parent="." instance=ExtResource( 3 )]
+position = Vector2( 642.114, 364.641 )
+z_index = 2
+
+[node name="Crate34" parent="." instance=ExtResource( 3 )]
+position = Vector2( 572.881, 405.367 )
+z_index = 2
+
+[node name="Crate35" parent="." instance=ExtResource( 3 )]
+position = Vector2( 549.26, 419.213 )
+z_index = 2
+
+[node name="Crate36" parent="." instance=ExtResource( 3 )]
+position = Vector2( 440.931, 430.616 )
+z_index = 2
+
+[node name="Crate37" parent="." instance=ExtResource( 3 )]
+position = Vector2( 462.108, 442.02 )
 z_index = 2
 
 [node name="Exit" parent="." instance=ExtResource( 4 )]
-position = Vector2( 417.311, 441.209 )
+position = Vector2( 639.588, 207.001 )
+
+[node name="Token_Spawner" parent="." instance=ExtResource( 5 )]
+position = Vector2( 375.023, 181.972 )
+
+[node name="Token_Spawner2" parent="." instance=ExtResource( 5 )]
+position = Vector2( 175.57, 324.568 )
+
+[node name="Token_Spawner3" parent="." instance=ExtResource( 5 )]
+position = Vector2( 681.772, 390.461 )
+
+[node name="ZapBoy" parent="." instance=ExtResource( 6 )]
+position = Vector2( 195.924, 286.491 )
+
+[node name="ZapBoy2" parent="." instance=ExtResource( 6 )]
+position = Vector2( 351.98, 194.602 )
+
+[node name="ZapBoy3" parent="." instance=ExtResource( 6 )]
+position = Vector2( 442.328, 274.17 )
+
+[node name="ZapBoy4" parent="." instance=ExtResource( 6 )]
+position = Vector2( 416.148, 387.619 )
+
+[node name="ZapBoy5" parent="." instance=ExtResource( 6 )]
+position = Vector2( 613.785, 351.172 )
+
+[node name="SpawnPoint" parent="." instance=ExtResource( 7 )]
+position = Vector2( 725.18, 387.106 )
+
+[node name="SpawnPoint2" parent="." instance=ExtResource( 7 )]
+position = Vector2( 508.036, 232.076 )
+
+[node name="SpawnPoint3" parent="." instance=ExtResource( 7 )]
+position = Vector2( 681.546, 205.896 )
+
+[node name="SpawnPoint4" parent="." instance=ExtResource( 7 )]
+position = Vector2( 484.631, 348.433 )
+
+[node name="Zappy" parent="." instance=ExtResource( 8 )]
+position = Vector2( 510.939, 138.738 )

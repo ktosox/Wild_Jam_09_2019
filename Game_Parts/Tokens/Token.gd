@@ -1,5 +1,7 @@
 extends Area2D
 
+var parentSpawner
+
 var fireData = [
 0,
 0,
@@ -31,5 +33,6 @@ func fixLocation():
 
 func _on_Token_area_entered(area):
 	area.grabToken(fireData)
+	parentSpawner.loseToken()
 	queue_free()
 	pass # Replace with function body.

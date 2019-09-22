@@ -485,5 +485,5 @@ hue_variation = 1.0
 hue_variation_random = 0.14
 
 [node name="TimerFireCooldown" type="Timer" parent="."]
-wait_time = 0.3
+wait_time = 0.4
 [connection signal="timeout" from="TimerFireCooldown" to="." method="_on_TimerFireCooldown_timeout"]

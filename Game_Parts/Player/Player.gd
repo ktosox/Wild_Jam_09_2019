@@ -2,9 +2,9 @@ extends Node2D
 
 var fireData = [
 	1, # damange : 1 to 3
-	1, #range in cells - 2 to 5
-	3, #type : 1 - barrage / 2 - blast / 3 - lasor 
-	2, # reused for ammo
+	2, #range in cells - 2 to 5
+	1, #type : 1 - barrage / 2 - blast / 3 - lasor 
+	7, # reused for ammo
 	Color(randf(),randf(),randf()) # color data
 ]
 #----------------------------------------------
@@ -56,11 +56,6 @@ func fixLocation():
 	global_position = GM.currentBoard.global_to_grid(global_position)
 
 
-
-func jump_to_cell(targetCell = Vector2()):
-	
-	pass
-	
 func jump_in_direction(direction = Vector2()):
 	blockInput = true
 	var target = Vector2()
@@ -131,6 +126,11 @@ func _on_TimerFireCooldown_timeout():
 	fireReady = true
 	pass # Replace with function body.
 	
+
+func pop():
+	GM.currentBoard.damange()
+	pass
+
 func winGame():
 	# - make player immortal
 	# - pay a tune?

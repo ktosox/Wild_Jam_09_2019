@@ -1,6 +1,7 @@
 extends Node2D
 
 var blastScene = load("res://Game_Parts/Player/Blast.tscn")
+var barrageScene = load("res://Game_Parts/Player/Barrage.tscn")
 
 func fire_canon(fireData):
 	match(fireData[2]):
@@ -12,7 +13,6 @@ func fire_canon(fireData):
 			fireLazor(fireData)
 
 func fireBlast(fireData):
-
 	var blast = blastScene.instance()
 	blast.global_position=global_position
 	var direction = get_parent().currentDirection
@@ -24,7 +24,14 @@ func fireBlast(fireData):
 	pass
 	
 func fireBarrage(fireData):
-	print("barrage")
+	var barrage = barrageScene.instance()
+	barrage.global_position=global_position
+	var direction = get_parent().currentDirection
+	barrage.linear_velocity.y =( (direction.x+direction.y) * (-26) ) + (-13 + randi()%26 )
+	barrage.linear_velocity.x =( (direction.x-direction.y) * (-44) ) + (-22 + randi()%44 )
+	barrage.modulate = fireData[4]
+	barrage.lifetime = fireData[1]
+	get_parent().get_parent().add_child(barrage)
 	pass
 	
 func fireLazor(fireData):

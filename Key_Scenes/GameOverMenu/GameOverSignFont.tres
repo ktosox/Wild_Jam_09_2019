@@ -1,0 +1,12 @@
+[gd_resource type="DynamicFont" load_steps=2 format=2]
+
+[ext_resource path="res://Resources/Fonts/technique/techniqu.ttf" type="DynamicFontData" id=1]
+
+[resource]
+size = 65
+outline_size = 4
+outline_color = Color( 0, 0.0470588, 0.0470588, 0.160784 )
+use_filter = true
+extra_spacing_char = 11
+extra_spacing_space = -7
+font_data = ExtResource( 1 )
