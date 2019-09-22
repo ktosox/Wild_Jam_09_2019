@@ -1,0 +1,145 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Game_Parts/Board/Board.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Game_Parts/Player/Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Game_Parts/Crates/Crate.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Game_Parts/Portals/Exit.tscn" type="PackedScene" id=4]
+
+[node name="Level5 - Under Construction" type="Node2D"]
+
+[node name="Board" parent="." instance=ExtResource( 1 )]
+tile_data = PoolIntArray( -524267, 20, 0, -524266, 20, 0, -524265, 20, 0, -458731, 20, 0, -458730, 20, 0, -458729, 20, 0, -393195, 20, 0, -393194, 20, 0, -393193, 20, 0, -327658, 20, 0, -262122, 20, 0, -196594, 20, 0, -196593, 20, 0, -196592, 20, 0, -196588, 20, 0, -196587, 20, 0, -196586, 20, 0, -196585, 20, 0, -131058, 20, 0, -131056, 20, 0, -131052, 20, 0, -131051, 20, 0, -131050, 20, 0, -131049, 20, 0, -131045, 20, 0, -131044, 20, 0, -131043, 20, 0, -65522, 20, 0, -65521, 20, 0, -65520, 20, 0, -65516, 20, 0, -65515, 20, 0, -65514, 20, 0, -65513, 20, 0, -65512, 20, 0, -65511, 20, 0, -65510, 20, 0, -65509, 20, 0, -65508, 20, 0, -65507, 20, 0, 15, 20, 0, 20, 20, 0, 21, 20, 0, 22, 20, 0, 23, 20, 0, 27, 20, 0, 28, 20, 0, 29, 20, 0, 65551, 20, 0, 65564, 20, 0, 131086, 20, 0, 131087, 20, 0, 131088, 20, 0, 131089, 20, 0, 131093, 20, 0, 131094, 20, 0, 131095, 20, 0, 131096, 20, 0, 131100, 20, 0, 196618, 20, 0, 196619, 20, 0, 196622, 20, 0, 196623, 20, 0, 196624, 20, 0, 196625, 20, 0, 196629, 20, 0, 196630, 20, 0, 196631, 20, 0, 196632, 20, 0, 196636, 20, 0, 262154, 20, 0, 262155, 20, 0, 262156, 20, 0, 262157, 20, 0, 262158, 20, 0, 262159, 20, 0, 262160, 20, 0, 262161, 20, 0, 262165, 20, 0, 262166, 20, 0, 262167, 20, 0, 262168, 20, 0, 262172, 20, 0, 327690, 20, 0, 327691, 20, 0, 327694, 20, 0, 327695, 20, 0, 327696, 20, 0, 327697, 20, 0, 327698, 20, 0, 327699, 20, 0, 327700, 20, 0, 327701, 20, 0, 327702, 20, 0, 327703, 20, 0, 327704, 20, 0, 327708, 20, 0, 393230, 20, 0, 393231, 20, 0, 393232, 20, 0, 393233, 20, 0, 393237, 20, 0, 393238, 20, 0, 393239, 20, 0, 393240, 20, 0, 393241, 20, 0, 393242, 20, 0, 393243, 20, 0, 393244, 20, 0, 458773, 20, 0, 458774, 20, 0, 458775, 20, 0, 458776, 20, 0, 524309, 20, 0, 524310, 20, 0, 524311, 20, 0, 524312, 20, 0 )
+
+[node name="Player" parent="." instance=ExtResource( 2 )]
+position = Vector2( 129.604, 192.488 )
+
+[node name="Crate" parent="." instance=ExtResource( 3 )]
+position = Vector2( 286.843, 313.641 )
+z_index = 2
+
+[node name="Crate2" parent="." instance=ExtResource( 3 )]
+position = Vector2( 309.14, 326.641 )
+z_index = 2
+
+[node name="Crate3" parent="." instance=ExtResource( 3 )]
+position = Vector2( 329.14, 336.325 )
+z_index = 2
+
+[node name="Crate7" parent="." instance=ExtResource( 3 )]
+position = Vector2( 549.14, 313.641 )
+z_index = 2
+
+[node name="Crate8" parent="." instance=ExtResource( 3 )]
+position = Vector2( 569.14, 326.325 )
+z_index = 2
+
+[node name="Crate9" parent="." instance=ExtResource( 3 )]
+position = Vector2( 594.14, 339.325 )
+z_index = 2
+
+[node name="Crate10" parent="." instance=ExtResource( 3 )]
+position = Vector2( 569.14, 246.325 )
+z_index = 2
+
+[node name="Crate11" parent="." instance=ExtResource( 3 )]
+position = Vector2( 594.14, 232.325 )
+z_index = 2
+
+[node name="Crate12" parent="." instance=ExtResource( 3 )]
+position = Vector2( 351.172, 377.022 )
+z_index = 2
+
+[node name="Crate13" parent="." instance=ExtResource( 3 )]
+position = Vector2( 372.064, 389.402 )
+z_index = 2
+
+[node name="Crate14" parent="." instance=ExtResource( 3 )]
+position = Vector2( 372.838, 363.868 )
+z_index = 2
+
+[node name="Crate15" parent="." instance=ExtResource( 3 )]
+position = Vector2( 392.182, 351.487 )
+z_index = 2
+
+[node name="Crate16" parent="." instance=ExtResource( 3 )]
+position = Vector2( 392.956, 377.022 )
+z_index = 2
+
+[node name="Crate17" parent="." instance=ExtResource( 3 )]
+position = Vector2( 415.396, 364.641 )
+z_index = 2
+
+[node name="Crate18" parent="." instance=ExtResource( 3 )]
+position = Vector2( 352.719, 403.33 )
+z_index = 2
+
+[node name="Crate19" parent="." instance=ExtResource( 3 )]
+position = Vector2( 331.827, 390.95 )
+z_index = 2
+
+[node name="Crate20" parent="." instance=ExtResource( 3 )]
+position = Vector2( 416.17, 339.88 )
+z_index = 2
+
+[node name="Crate21" parent="." instance=ExtResource( 3 )]
+position = Vector2( 437.836, 352.261 )
+z_index = 2
+
+[node name="Crate22" parent="." instance=ExtResource( 3 )]
+position = Vector2( 222.724, 274.109 )
+z_index = 2
+
+[node name="Crate23" parent="." instance=ExtResource( 3 )]
+position = Vector2( 244.39, 259.407 )
+z_index = 2
+
+[node name="Crate24" parent="." instance=ExtResource( 3 )]
+position = Vector2( 266.056, 247.8 )
+z_index = 2
+
+[node name="Crate25" parent="." instance=ExtResource( 3 )]
+position = Vector2( 243.616, 286.489 )
+z_index = 2
+
+[node name="Crate26" parent="." instance=ExtResource( 3 )]
+position = Vector2( 262.961, 274.109 )
+z_index = 2
+
+[node name="Crate27" parent="." instance=ExtResource( 3 )]
+position = Vector2( 286.174, 260.181 )
+z_index = 2
+
+[node name="Crate28" parent="." instance=ExtResource( 3 )]
+position = Vector2( 508.25, 285.878 )
+z_index = 2
+
+[node name="Crate29" parent="." instance=ExtResource( 3 )]
+position = Vector2( 488.416, 298.707 )
+z_index = 2
+
+[node name="Crate32" parent="." instance=ExtResource( 3 )]
+position = Vector2( 527.594, 274.109 )
+z_index = 2
+
+[node name="Crate33" parent="." instance=ExtResource( 3 )]
+position = Vector2( 642.114, 364.641 )
+z_index = 2
+
+[node name="Crate34" parent="." instance=ExtResource( 3 )]
+position = Vector2( 572.881, 405.367 )
+z_index = 2
+
+[node name="Crate35" parent="." instance=ExtResource( 3 )]
+position = Vector2( 549.26, 419.213 )
+z_index = 2
+
+[node name="Crate36" parent="." instance=ExtResource( 3 )]
+position = Vector2( 440.931, 430.616 )
+z_index = 2
+
+[node name="Crate37" parent="." instance=ExtResource( 3 )]
+position = Vector2( 462.108, 442.02 )
+z_index = 2
+
+[node name="Exit" parent="." instance=ExtResource( 4 )]
+position = Vector2( 639.588, 207.001 )
