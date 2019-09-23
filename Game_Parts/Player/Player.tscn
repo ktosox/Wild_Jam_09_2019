@@ -407,8 +407,7 @@ curve = SubResource( 3 )
 script = ExtResource( 2 )
 
 [node name="PathFollow2D2" type="PathFollow2D" parent="Path2D"]
-position = Vector2( 14.2308, 10.5051 )
-offset = 17.1297
+position = Vector2( 0.358576, 0.455461 )
 rotate = false
 loop = false
 
@@ -419,8 +418,7 @@ scale = Vector2( 1, 0.5 )
 texture = ExtResource( 3 )
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
-position = Vector2( 14.2308, 10.5051 )
-offset = 17.1297
+position = Vector2( 0.358576, 0.455461 )
 rotate = false
 loop = false
 
