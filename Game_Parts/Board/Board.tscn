@@ -410,11 +410,12 @@ script = ExtResource( 32 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 391.909, 333.123 )
-z_index = 60
+z_index = 300
 current = true
 zoom = Vector2( 0.75, 0.75 )
 
 [node name="Interface" type="VBoxContainer" parent="Camera2D"]
+editor/display_folded = true
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = -385.0
@@ -498,7 +499,7 @@ anims/trans_out = SubResource( 4 )
 
 [node name="square_white_2048x2048" type="Sprite" parent="."]
 modulate = Color( 0.0392157, 0.631373, 0.745098, 1 )
-position = Vector2( 536.679, -267.752 )
+position = Vector2( 495.942, -1065.47 )
 texture = ExtResource( 35 )
 
 [node name="selector" type="Sprite" parent="."]

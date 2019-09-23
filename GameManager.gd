@@ -81,12 +81,8 @@ func resetLevel():
 			6:
 				get_tree().change_scene("res://Levels/6.tscn")
 			7:
-				get_tree().change_scene("res://Levels/7.tscn")
-			8:
-				get_tree().change_scene("res://Levels/8.tscn")
-			9:
-				get_tree().change_scene("res://Levels/9.tscn")
-	
+				changeToCredits()
+
 func end_program():
 	get_tree().quit()
 	pass
