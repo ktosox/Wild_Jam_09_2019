@@ -17,12 +17,14 @@ func updateZ():
 func _physics_process(delta):
 	updateZ()
 	if(startCell.distance_to(GM.currentBoard.world_to_map(global_position))>lifetime):
+		$HitSound.volume_db = -60
 		pop()
 	pass
 
 func pop():
 	$Sprite.visible = false
 	linear_velocity = Vector2()
+	$HitSound.play()
 	#$CPUParticles2D.emitting = true
 	$TimerDie.start()
 # Called every frame. 'delta' is the elapsed time since the previous frame.

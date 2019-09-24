@@ -5,6 +5,7 @@ extends RigidBody2D
 # var b = "text"
 var startCell = Vector2()
 var lifetime
+var dead = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -17,14 +18,18 @@ func updateZ():
 func _physics_process(delta):
 	updateZ()
 	if(startCell.distance_to(GM.currentBoard.world_to_map(global_position))>lifetime):
+		$HitSound.volume_db = -60
 		pop()
 	pass
 
 func pop():
-	$Sprite.visible = false
-	linear_velocity = Vector2()
-	#$CPUParticles2D.emitting = true
-	$TimerDie.start()
+	if(!dead):
+		dead = true
+		$Sprite.visible = false
+		$HitSound.play()
+		linear_velocity = Vector2()
+		#$CPUParticles2D.emitting = true
+		$TimerDie.start()
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
