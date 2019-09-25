@@ -48,13 +48,28 @@ func _input(event):
 			var direction = currentCell - clickedCell
 			if(validDirections.has(direction)):
 				jump_in_direction(direction)
+
 		#find the selected cell
 		# check if cell is okay
 		#jump_in_direction(Vector2((((randi()%2)*2)-1),(((randi()%2)*2)-1)))
 
 func fixLocation():
 	global_position = GM.currentBoard.global_to_grid(global_position)
-
+	
+func _physics_process(delta):
+	if(blockInput == false):
+		if(Input.is_action_pressed("ui_up")):
+			if(GM.currentBoard.is_cell_valid(currentCell+Vector2(0,-1))):
+				jump_in_direction(Vector2(0,1))
+		if(Input.is_action_pressed("ui_down")):
+			if(GM.currentBoard.is_cell_valid(currentCell+Vector2(0,1))):
+				jump_in_direction(Vector2(0,-1))
+		if(Input.is_action_pressed("ui_left")):
+			if(GM.currentBoard.is_cell_valid(currentCell+Vector2(-1,0))):
+				jump_in_direction(Vector2(1,0))
+		if(Input.is_action_pressed("ui_right")):
+			if(GM.currentBoard.is_cell_valid(currentCell+Vector2(1,0))):
+				jump_in_direction(Vector2(-1,0))
 
 func jump_in_direction(direction = Vector2()):
 	blockInput = true
