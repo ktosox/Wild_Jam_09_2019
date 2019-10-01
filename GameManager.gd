@@ -1,6 +1,6 @@
 extends Node
 
-
+# Global variables used by multiple scenes
 
 var currentCamera
 #screenShake(time)
@@ -8,12 +8,15 @@ var currentCamera
 #fadeIn(time)
 #colorSplash(time, color)
 
-
 var currentPlayer
 
 var currentBoard
 
 var currentLevel = 1
+
+#------------------------------------------------
+
+# Paths to key scenes
 
 var introPath = "res://Key_Scenes/Intro/Intro.tscn"
 
@@ -27,9 +30,9 @@ var pauseMenuScene = load("res://Game_Parts/PauseMenu/PauseMenu.tscn")
 
 var gameOverMenuScene = load("res://Key_Scenes/GameOverMenu/GameOverMenu.tscn")
 
-func _ready():
+#------------------------------------------------
 
-	pass
+# Methods for switching between key scenes
 
 func changeToMainMenu():
 	get_tree().change_scene(mainMenuPath)
@@ -43,16 +46,21 @@ func changeToCredits():
 func changeToIntro():
 	get_tree().change_scene(introPath)
 	
+#------------------------------------------------
+
+# Utility functions for in game pop up menus
+
 func pause_game():
 	var newPauseMenu = pauseMenuScene.instance()
 	currentCamera.add_child(newPauseMenu)
 	get_tree().paused = true
 
-
 func lose_game():
 	var newGameOverMenu = gameOverMenuScene.instance()
 	currentCamera.add_child(newGameOverMenu)
 	get_tree().paused = true
+
+
 
 func win_game(caller):
 	currentLevel+=1
@@ -60,12 +68,13 @@ func win_game(caller):
 	caller.free()
 	#ends current level and ptogresses player to next level
 	#called by Game scene upon player reaching objective
-	pass
 	
+
 func switchLevel():
 	currentLevel += 1
 	resetLevel()
 
+# this requires an overhaul, I guess
 func resetLevel():
 		match(currentLevel):
 			1:
@@ -83,6 +92,7 @@ func resetLevel():
 			7:
 				changeToCredits()
 
+# dont forget to change this to return menu on html realease
 func end_program():
 	get_tree().quit()
 	pass

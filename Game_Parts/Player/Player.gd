@@ -122,7 +122,7 @@ func mergColors(Color1=Color(), Color2=Color()):
 	match (randi()%3):
 		0:
 			newColor.r=Color1.r
-			newColor.r=Color2.b
+			newColor.b=Color2.b
 			newColor.g=(Color1.g + Color2.g)/2.0
 		1:
 			newColor.r=Color2.r
@@ -130,8 +130,8 @@ func mergColors(Color1=Color(), Color2=Color()):
 			newColor.b=(Color1.b + Color2.b)/2.0
 			
 		2:
-			newColor.g=Color1.g
-			newColor.b=Color2.b
+			newColor.g=Color2.g
+			newColor.b=Color1.b
 			newColor.r=(Color1.r + Color2.r)/2.0
 			
 
