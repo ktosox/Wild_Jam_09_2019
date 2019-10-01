@@ -83,10 +83,12 @@ func global_to_grid(position = Vector2()):
 	
 # updates interface data
 func updateInterface(fireData = []):
-	$Camera2D/Interface/power.setValue(String(fireData[0]))
-	$Camera2D/Interface/type.setValue(String(fireData[2]))
-	$Camera2D/Interface/rnge.setValue(String(fireData[1]))
-	$Camera2D/Interface/ammo.setValue(String(fireData[3]))
+	pass
+	#on hold due to changes
+	#$Camera2D/Interface/power.setValue(String(fireData[0]))
+	#$Camera2D/Interface/type.setValue(String(fireData[2]))
+	#$Camera2D/Interface/rnge.setValue(String(fireData[1]))
+	#$Camera2D/Interface/ammo.setValue(String(fireData[3]))
 
 
 func endLevel():
