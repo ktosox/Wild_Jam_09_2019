@@ -15,7 +15,7 @@ var playerMOVE = 5
 #called when player gets damaged
 func damange():
 	playerHP -=1
-	$Camera2D/Interface/NinePatchRect/HP.value  = playerHP
+	$Camera2D/Interface/VBoxContainer/HBoxContainer/HP.setValue(String(playerHP))
 	#camera shake shood be implemented here
 	if(playerHP < 1):
 		GM.lose_game()
