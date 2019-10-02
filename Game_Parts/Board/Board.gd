@@ -6,18 +6,27 @@ var invalidCells = [-1,9,15] # cells with magma / water
 var claimedCells = [] # cells with something sitting on them
 var listedSpawns = [] #every spawn 
 
+# player stats
+
+var playerHP = 3
+var playerMOVE = 5
+
 
 #called when player gets damaged
 func damange():
-	$Camera2D/Interface/NinePatchRect/HP.value -=1
+	playerHP -=1
+	$Camera2D/Interface/NinePatchRect/HP.value  = playerHP
 	#camera shake shood be implemented here
-	if($Camera2D/Interface/NinePatchRect/HP.value == 0):
+	if(playerHP < 1):
 		GM.lose_game()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	GM.currentBoard = self
 	GM.currentCamera = $Camera2D
+	$Camera2D/Interface/VBoxContainer/HBoxContainer/HP.setValue(String(playerHP))
+	$Camera2D/Interface/VBoxContainer/HBoxContainer/Move.setValue(String(playerMOVE))
+	
 
 # Checks if the mouse moved
 func _input(event):
@@ -99,3 +108,8 @@ func endLevel():
 func changeLevel():
 	GM.switchLevel()
 	pass
+
+func _on_TimerMoveGain_timeout():
+	if (playerMOVE < 10):
+		playerMOVE += 1
+		$Camera2D/Interface/VBoxContainer/HBoxContainer/Move.setValue(String(playerMOVE))
