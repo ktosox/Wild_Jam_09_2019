@@ -1,13 +1,23 @@
 extends Node2D
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
+#selector recieves calls from board
+#sets the the selection boxes accoridngly
 
-# Called when the node enters the scene tree for the first time.
+#origin and gaol are defined in board space / not global cords
+
+var origin # starting point of the selection chain
+
+var goal # end poinbt of the selection chain
+
 func _ready():
-	pass # Replace with function body.
+	pass
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func setChain():
+	var path = getPath()
+	while (path.size()>0):
+		pass
+	pass
+
+func getPath():
+	#returs an array of vectors - every vector is a single link in the chain
+	pass
