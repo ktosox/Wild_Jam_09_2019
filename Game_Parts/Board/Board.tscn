@@ -125,30 +125,30 @@ cell_size = Vector2( 112, 56 )
 cell_y_sort = true
 cell_clip_uv = true
 format = 1
-tile_data = PoolIntArray( -327661, 1, 0, -327660, 1, 0, -327659, 1, 0, -262128, 1, 0, -262127, 1, 0, -262126, 1, 0, -262125, 1, 0, -262124, 1, 0, -262123, 1, 0, -262122, 0, 0, -262121, 0, 0, -262120, 0, 0, -196592, 2, 0, -196591, 1, 0, -196590, 1, 0, -196589, 1, 0, -196588, 1, 0, -196587, 1, 0, -196586, 0, 0, -196585, 0, 0, -196584, 0, 0, -131060, 2, 0, -131059, 2, 0, -131058, 2, 0, -131057, 2, 0, -131056, 2, 0, -131055, 5, 0, -131054, 5, 0, -131053, 5, 0, -131052, 5, 0, -131051, 5, 0, -131050, 0, 0, -131049, 0, 0, -131048, 0, 0, -131047, 0, 0, -131046, 0, 0, -65524, 2, 0, -65523, 2, 0, -65522, 2, 0, -65521, 5, 0, -65520, 5, 0, -65519, 5, 0, -65518, 5, 0, -65517, 5, 0, -65516, 5, 0, -65515, 5, 0, -65514, 0, 0, -65513, 0, 0, -65512, 0, 0, -65511, 0, 0, -65510, 0, 0, 13, 2, 0, 14, 2, 0, 15, 5, 0, 16, 5, 0, 17, 5, 0, 18, 5, 0, 19, 5, 0, 20, 5, 0, 21, 5, 0, 22, 0, 0, 23, 0, 0, 24, 0, 0, 25, 0, 0, 26, 0, 0, 27, 0, 0, 65548, 2, 0, 65549, 2, 0, 65550, 2, 0, 65551, 2, 0, 65552, 2, 0, 65553, 2, 0, 65554, 3, 0, 65555, 5, 0, 65556, 5, 0, 65557, 5, 0, 65558, 0, 0, 65559, 0, 0, 65560, 0, 0, 65561, 0, 0, 65562, 0, 0, 65563, 0, 0, 131085, 2, 0, 131086, 2, 0, 131087, 2, 0, 131088, 2, 0, 131089, 2, 0, 131090, 3, 0, 131091, 3, 0, 131092, 3, 0, 131093, 0, 0, 131094, 0, 0, 131095, 0, 0, 131096, 0, 0, 131097, 0, 0, 131098, 0, 0, 131099, 0, 0, 196621, 2, 0, 196622, 2, 0, 196623, 4, 0, 196624, 2, 0, 196625, 2, 0, 196626, 3, 0, 196627, 3, 0, 196628, 4, 0, 196629, 0, 0, 196630, 0, 0, 196631, 0, 0, 196632, 0, 0, 196633, 0, 0, 196634, 0, 0, 196635, 0, 0, 262158, 2, 0, 262159, 4, 0, 262160, 4, 0, 262161, 4, 0, 262162, 4, 0, 262163, 4, 0, 262164, 4, 0, 262165, 0, 0, 262166, 0, 0, 262167, 0, 0, 262168, 0, 0, 262169, 0, 0, 327702, 0, 0, 327703, 0, 0, 327704, 0, 0 )
 script = ExtResource( 7 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2( 1216.51, 798.893 )
+position = Vector2( 800, 450 )
 z_index = 300
 current = true
 
 [node name="Interface" type="ColorRect" parent="Camera2D"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -1003.32
-margin_top = -582.492
-margin_right = -793.316
-margin_bottom = -437.492
-rect_min_size = Vector2( 180, 120 )
+margin_left = -800.0
+margin_top = -450.0
+margin_right = -440.0
+margin_bottom = -250.0
+rect_min_size = Vector2( 360, 200 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Camera2D/Interface"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 
 [node name="TextureRect" type="TextureRect" parent="Camera2D/Interface/VBoxContainer"]
-margin_right = 210.0
-margin_bottom = 70.0
+margin_right = 360.0
+margin_bottom = 98.0
 rect_min_size = Vector2( 0, 60 )
 size_flags_vertical = 3
 texture = ExtResource( 8 )
@@ -156,24 +156,24 @@ expand = true
 stretch_mode = 5
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Camera2D/Interface/VBoxContainer"]
-margin_top = 74.0
-margin_right = 210.0
-margin_bottom = 145.0
+margin_top = 102.0
+margin_right = 360.0
+margin_bottom = 200.0
 size_flags_vertical = 3
 
 [node name="HP" parent="Camera2D/Interface/VBoxContainer/HBoxContainer" instance=ExtResource( 9 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_right = 103.0
-margin_bottom = 71.0
+margin_right = 178.0
+margin_bottom = 98.0
 boxName = "HELATH"
 
 [node name="Move" parent="Camera2D/Interface/VBoxContainer/HBoxContainer" instance=ExtResource( 9 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 107.0
-margin_right = 210.0
-margin_bottom = 71.0
+margin_left = 182.0
+margin_right = 360.0
+margin_bottom = 98.0
 boxName = "MOVE"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

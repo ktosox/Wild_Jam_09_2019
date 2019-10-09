@@ -1,7 +1,5 @@
 extends TileMap
 
-const tileOffset = Vector2(22,13)
-
 var invalidCells = [-1,9,15] # cells with magma / water
 var claimedCells = [] # cells with something sitting on them
 var listedSpawns = [] #every spawn 
@@ -78,16 +76,16 @@ func getSpawn():
 #translates a given position from board cell cords to global cords
 func cell_to_grid(cell = Vector2()):
 	var newPosition = Vector2()
-	newPosition.x = (cell.x-cell.y)*22
-	newPosition.y = (cell.x+cell.y+1)*13
+	newPosition.x = (cell.x-cell.y)*GM.cellSize.x
+	newPosition.y = (cell.x+cell.y+1)*GM.cellSize.y
 	return newPosition
 
 # adjusts a global cords to fit in to the grid
 func global_to_grid(position = Vector2()):
 	var cellPosition = world_to_map(position)
 	var newPosition = Vector2()
-	newPosition.x = (cellPosition.x-cellPosition.y)*22
-	newPosition.y = (cellPosition.x+cellPosition.y+1)*13
+	newPosition.x = (cellPosition.x-cellPosition.y)*GM.cellSize.x
+	newPosition.y = (cellPosition.x+cellPosition.y+1)*GM.cellSize.y
 	return newPosition
 	
 # updates interface data

@@ -2,6 +2,8 @@ extends Node
 
 # Global variables used by multiple scenes
 
+const cellSize = Vector2(56,28)
+
 var currentCamera
 #screenShake(time)
 #fadeOut(time)

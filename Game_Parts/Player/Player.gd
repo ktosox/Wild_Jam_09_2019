@@ -74,8 +74,8 @@ func _physics_process(delta):
 func jump_in_direction(direction = Vector2()):
 	blockInput = true
 	var target = Vector2()
-	target.x = (direction.x-direction.y)*(-22)
-	target.y = (direction.x+direction.y)*(-13)
+	target.x = (direction.x-direction.y)*(-GM.cellSize.x)
+	target.y = (direction.x+direction.y)*(-GM.cellSize.y)
 	$Path2D.updatePath(target)
 	var directionAnimation
 	match(direction):
