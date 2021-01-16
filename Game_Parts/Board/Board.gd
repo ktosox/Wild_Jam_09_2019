@@ -7,12 +7,7 @@ var claimedCells = [] # cells with something sitting on them
 var listedSpawns = [] #every spawn 
 
 
-#called when player gets damaged
-func damange():
-	$Camera2D/Interface/NinePatchRect/HP.value -=1
-	#camera shake shood be implemented here
-	if($Camera2D/Interface/NinePatchRect/HP.value == 0):
-		GM.lose_game()
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -82,11 +77,11 @@ func global_to_grid(position = Vector2()):
 	return newPosition
 	
 # updates interface data
-func updateInterface(fireData = []):
-	$Camera2D/Interface/power.setValue(String(fireData[0]))
-	$Camera2D/Interface/type.setValue(String(fireData[2]))
-	$Camera2D/Interface/rnge.setValue(String(fireData[1]))
-	$Camera2D/Interface/ammo.setValue(String(fireData[3]))
+#func updateInterface(fireData = []):
+#	$Camera2D/Interface/power.setValue(String(fireData[0]))
+#	$Camera2D/Interface/type.setValue(String(fireData[2]))
+#	$Camera2D/Interface/rnge.setValue(String(fireData[1]))
+#	$Camera2D/Interface/ammo.setValue(String(fireData[3]))
 
 
 func endLevel():

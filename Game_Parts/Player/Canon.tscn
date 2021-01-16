@@ -69,13 +69,15 @@ tracks/3/keys = {
 [node name="Canon" type="Node2D"]
 script = ExtResource( 1 )
 
-[node name="Polygon2D" type="Polygon2D" parent="."]
-visible = false
-color = Color( 1, 0, 0, 0.317647 )
-polygon = PoolVector2Array( -0.669641, -0.891699, -0.89999, 0.536468, 0.159616, 1.18145, 1.12708, -0.0163708, 0.343897, -0.937769 )
+[node name="Muzzle" type="Polygon2D" parent="."]
+position = Vector2( 0, 30 )
+color = Color( 0, 0, 0, 1 )
+polygon = PoolVector2Array( -1.10105, -1.42907, -1.65849, 0.800695, -0.0976601, 1.54395, 1.79764, 1.13516, 1.79764, -0.834465, 0.385454, -2.06083 )
 
 [node name="Node2D" type="Node2D" parent="."]
 visible = false
+position = Vector2( 15.2412, 0 )
+rotation = 3.14159
 
 [node name="Line2D" type="Line2D" parent="Node2D"]
 scale = Vector2( 1, 0.001 )
@@ -108,3 +110,8 @@ shape = SubResource( 3 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Node2D"]
 anims/fire = SubResource( 4 )
+
+[node name="Line2D" type="Line2D" parent="."]
+points = PoolVector2Array( -0.125, -0.125, 0, 29.375 )
+width = 3.0
+default_color = Color( 0.101961, 0.105882, 0.117647, 1 )

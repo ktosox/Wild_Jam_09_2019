@@ -4,8 +4,7 @@ extends Area2D
 # var a = 2
 # var b = "text"
 var currentCell = Vector2()
-
-
+export var speed = 1
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -26,18 +25,21 @@ func fixLocation():
 #func _process(delta):
 #	pass
 
-func move():
-	
-	var options = [
-	Vector2(0,-1),
-	Vector2(0,1),
-	Vector2(-1,0),
-	Vector2(1,0)
-]
-	var selection  = randi()%options.size()
-	if(GM.currentBoard.is_cell_valid(currentCell - options[selection])):
-		jump_in_direction(options[selection])
-		print("moving!")
+func _physics_process(delta):
+	global_position += (GM.currentPlayer.global_position-global_position) * delta * speed
+	pass
+
+#func move():
+#	var options = [
+#	Vector2(0,-1),
+#	Vector2(0,1),
+#	Vector2(-1,0),
+#	Vector2(1,0)
+#]
+#	var selection  = randi()%options.size()
+#	if(GM.currentBoard.is_cell_valid(currentCell - options[selection])):
+#		jump_in_direction(options[selection])
+#		print("moving!")
 
 
 func jump_in_direction(direction = Vector2()):
@@ -78,5 +80,5 @@ func _on_ZapBoy_body_entered(body):
 
 func _on_TimerMove_timeout():
 	print("time to move!")
-	move()
+#	move()
 	pass # Replace with function body.

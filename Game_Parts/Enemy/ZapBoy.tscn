@@ -1,8 +1,8 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Game_Parts/Enemy/ZapBoy.gd" type="Script" id=1]
 [ext_resource path="res://Game_Parts/Enemy/Path2D.gd" type="Script" id=2]
-[ext_resource path="res://Resources/ringed_sphere.png" type="Texture" id=3]
+[ext_resource path="res://Resources/zeppelin_sharp.png" type="Texture" id=3]
 [ext_resource path="res://Resources/Particles/effect16.png" type="Texture" id=4]
 
 [sub_resource type="CapsuleShape2D" id=1]
@@ -98,6 +98,23 @@ _data = {
 "points": PoolVector2Array(  )
 }
 
+[sub_resource type="Animation" id=5]
+resource_name = "New Anim"
+length = 10.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:speed")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.4, 2.9, 3.3, 4.9, 6.6, 7.7, 8.5, 10 ),
+"transitions": PoolRealArray( 1, 1, -2, 1, 1, 1, -2, 1, -2 ),
+"update": 0,
+"values": [ 1, 0, 1, 1, 0, 1, 0, 0, 1 ]
+}
+
 [node name="ZapBoy" type="Area2D"]
 collision_layer = 8
 collision_mask = 32
@@ -122,9 +139,8 @@ rotate = false
 loop = false
 
 [node name="ringed_sphere" type="Sprite" parent="Path2D/PathFollow2D"]
-self_modulate = Color( 0.709804, 0, 0, 1 )
-position = Vector2( 0, -4 )
-scale = Vector2( 0.2, 0.2 )
+position = Vector2( 0, -8 )
+scale = Vector2( 0.35, 0.35 )
 texture = ExtResource( 3 )
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="Path2D/PathFollow2D"]
@@ -142,8 +158,12 @@ initial_velocity = 20.0
 scale_amount = 0.4
 
 [node name="TimerMove" type="Timer" parent="."]
-wait_time = 3.0
+wait_time = 1.6
 autostart = true
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="."]
+autoplay = "New Anim"
+"anims/New Anim" = SubResource( 5 )
 [connection signal="area_entered" from="." to="." method="_on_ZapBoy_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_ZapBoy_body_entered"]
 [connection signal="timeout" from="TimerMove" to="." method="_on_TimerMove_timeout"]
