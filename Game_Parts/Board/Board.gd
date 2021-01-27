@@ -1,5 +1,6 @@
 extends TileMap
 
+
 const tileOffset = Vector2(22,13)
 
 var invalidCells = [-1,9,15] # cells with magma / water
@@ -8,11 +9,9 @@ var listedSpawns = [] #every spawn
 
 
 
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	GM.currentBoard = self
-	GM.currentCamera = $Camera2D
 
 # Checks if the mouse moved
 func _input(event):

@@ -3,6 +3,8 @@ extends Node2D
 var blastScene = load("res://Game_Parts/Player/Blast.tscn")
 var barrageScene = load("res://Game_Parts/Player/Barrage.tscn")
 
+var bulletScene = load("res://Game_Parts/Player/PlayerBullet.tscn")
+
 var projectileSpeed = 200
 
 func _physics_process(delta):
@@ -17,6 +19,13 @@ func fire_canon(fireData):
 			fireBlast(fireData)
 		3:
 			fireLazor(fireData)
+
+
+func fire_bullet():
+	var bullet = bulletScene.instance()
+	bullet.global_position = $Muzzle.global_position
+	bullet.direction = Vector2(sin(rotation),-cos(rotation)) * -1
+	get_parent().get_parent().add_child(bullet) #this needs a clean up
 
 func fireBlast(fireData):
 	var blast = blastScene.instance()

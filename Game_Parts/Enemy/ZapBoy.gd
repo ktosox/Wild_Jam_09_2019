@@ -4,7 +4,9 @@ extends Area2D
 # var a = 2
 # var b = "text"
 var currentCell = Vector2()
-export var speed = 1
+var active = false
+
+export var speed = 1.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -16,7 +18,7 @@ func _ready():
 
 func update_current_cell():
 	currentCell = GM.currentBoard.world_to_map(global_position)
-	z_index=GM.currentBoard.world_to_map(global_position).x+GM.currentBoard.world_to_map(global_position).y
+#	z_index=GM.currentBoard.world_to_map(global_position).x+GM.currentBoard.world_to_map(global_position).y
 
 func fixLocation():
 	global_position = GM.currentBoard.global_to_grid(global_position)
@@ -26,7 +28,8 @@ func fixLocation():
 #	pass
 
 func _physics_process(delta):
-	global_position += (GM.currentPlayer.global_position-global_position) * delta * speed
+	if(active):
+		global_position += (GM.currentPlayer.global_position-global_position) * delta * speed
 	pass
 
 #func move():
@@ -81,4 +84,9 @@ func _on_ZapBoy_body_entered(body):
 func _on_TimerMove_timeout():
 	print("time to move!")
 #	move()
+	pass # Replace with function body.
+
+
+func _on_AggroRange_area_entered(area):
+	active = true
 	pass # Replace with function body.

@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=2]
+[gd_scene load_steps=39 format=2]
 
 [ext_resource path="res://Resources/assets_pixel_50x50/isometric_pixel_0000.png" type="Texture" id=1]
 [ext_resource path="res://Resources/assets_pixel_50x50/isometric_pixel_0001.png" type="Texture" id=2]
@@ -35,7 +35,10 @@
 [ext_resource path="res://Resources/square_white_2048x2048.png" type="Texture" id=35]
 [ext_resource path="res://Resources/selector.png" type="Texture" id=37]
 
-[sub_resource type="TileSet" id=1]
+[sub_resource type="ConvexPolygonShape2D" id=1]
+points = PoolVector2Array( 44, 13, 22, 26, 0, 13, 22, 0, 22, 0 )
+
+[sub_resource type="TileSet" id=2]
 0/name = "isometric_pixel_0000.png 0"
 0/texture = ExtResource( 1 )
 0/tex_offset = Vector2( 0, 0 )
@@ -256,9 +259,16 @@
 15/navigation_offset = Vector2( 0, 0 )
 15/shape_offset = Vector2( 0, 0 )
 15/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+15/shape = SubResource( 1 )
 15/shape_one_way = false
-15/shape_one_way_margin = 0.0
-15/shapes = [  ]
+15/shape_one_way_margin = 1.0
+15/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 1 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
 15/z_index = 0
 16/name = "isometric_pixel_0065.png 16"
 16/texture = ExtResource( 9 )
@@ -471,7 +481,7 @@
 30/shapes = [  ]
 30/z_index = 0
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=3]
 length = 1.8
 tracks/0/type = "value"
 tracks/0/path = NodePath("square_white_2048x2048:position")
@@ -486,7 +496,7 @@ tracks/0/keys = {
 "values": [ Vector2( 594.875, 871.848 ), Vector2( 495.942, -1065.47 ) ]
 }
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=4]
 length = 2.3
 tracks/0/type = "value"
 tracks/0/path = NodePath("square_white_2048x2048:position")
@@ -516,18 +526,19 @@ tracks/1/keys = {
 }
 
 [node name="Board" type="TileMap"]
+position = Vector2( 0, 26 )
 mode = 1
-tile_set = SubResource( 1 )
+tile_set = SubResource( 2 )
 cell_size = Vector2( 44, 26 )
-cell_y_sort = true
+centered_textures = true
 cell_clip_uv = true
 format = 1
 script = ExtResource( 32 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "trans_in"
-anims/trans_in = SubResource( 2 )
-anims/trans_out = SubResource( 3 )
+anims/trans_in = SubResource( 3 )
+anims/trans_out = SubResource( 4 )
 
 [node name="square_white_2048x2048" type="Sprite" parent="."]
 modulate = Color( 0.0392157, 0.631373, 0.745098, 1 )

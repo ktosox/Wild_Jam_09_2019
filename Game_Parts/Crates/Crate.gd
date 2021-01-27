@@ -6,7 +6,7 @@ var HP = 3
 func _ready():
 	fixLocation()
 	GM.currentBoard.claimCell(global_position)
-	z_index=GM.currentBoard.world_to_map(global_position).x+GM.currentBoard.world_to_map(global_position).y
+#	z_index=GM.currentBoard.world_to_map(global_position).x+GM.currentBoard.world_to_map(global_position).y
 	
 func fixLocation():
 	global_position = GM.currentBoard.global_to_grid(global_position)

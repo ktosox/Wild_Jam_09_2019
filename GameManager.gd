@@ -57,10 +57,8 @@ func pause_game():
 
 func lose_game():
 	var newGameOverMenu = gameOverMenuScene.instance()
-	currentCamera.add_child(newGameOverMenu)
+	currentBoard.add_child(newGameOverMenu)
 	get_tree().paused = true
-
-
 
 func win_game(caller):
 	currentLevel+=1

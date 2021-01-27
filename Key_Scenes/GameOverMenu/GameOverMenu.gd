@@ -1,4 +1,4 @@
-extends Control
+extends CanvasLayer
 
 # Declare member variables here. Examples:
 # var a = 2
@@ -23,13 +23,6 @@ func _on_GameOverButton_pressed():
 	get_tree().paused = false
 	GM.resetLevel()
 	
-	pass # Replace with function body.
-
-
-func _on_GameOverButton2_pressed():
-	get_tree().paused = false
-	GM.currentLevel = 1
-	GM.resetLevel()
 	pass # Replace with function body.
 
 
