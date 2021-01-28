@@ -12,21 +12,25 @@ var fireData = [
 
 
 var blockInput = false
-var followPath = false
 
-var moving = true
-var painting = false
+var moving = false
+var painting = true
 var shooting = true
 
 var paintedCell = Vector2()
 
 var fireReady = true
 
-var speedMax = 10
+var speedMax = 50
 var speedCurrent = 0
 var speedAcceleration = 5
 
+var target = Vector2()
+var targetList = []
+
 var playerHP = 10
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	GM.currentPlayer = self
@@ -45,18 +49,20 @@ func _input(event):
 		if(painting):
 			start_path()
 			pass
-		if(shooting):
-			if(fireReady ): # and fireData[3]>0  - I cut this out so ammo is infinite
-				fireReady = false
-				$TimerFireCooldown.start()
-				$Canon.fire_bullet()
-	#			$Canon.fire_canon(fireData)
-	#			fireData[3] -= 1
-	#			GM.currentBoard.updateInterface(fireData)
+#		if(shooting):
+#			if(fireReady ): # and fireData[3]>0  - I cut this out so ammo is infinite
+#				fireReady = false
+#				$TimerFireCooldown.start()
+#				$Canon.fire_bullet()
+#	#			$Canon.fire_canon(fireData)
+#	#			fireData[3] -= 1
+#	#			GM.currentBoard.updateInterface(fireData)
 	if(event.is_action_pressed("LMB")):
-		if(painting):
-			pass
-		pass
+		print(get_global_mouse_position())
+#		if(painting):
+#			start_path()
+#			pass
+#		pass
 		
 #		if(GM.currentBoard.is_cell_valid(clickedCell)): # this is part of the previous movement system
 #			var direction = currentCell - clickedCell
@@ -65,9 +71,9 @@ func _input(event):
 	if(event.is_action_pressed("RMB")):
 		if(painting):
 			cancel_path()
-			shooting = true
-		if(shooting):
-			paint_path()
+#			shooting = true
+#		if(shooting):
+#			paint_path()
 		#find the selected cell
 		# check if cell is okay
 		#jump_in_direction(Vector2((((randi()%2)*2)-1),(((randi()%2)*2)-1)))
@@ -78,38 +84,52 @@ func _input(event):
 func _physics_process(delta):
 
 	if(moving):
-		move_and_collide(get_local_mouse_position().normalized()*2)
+		var endPos =  target - global_position
+		move_and_collide(endPos.normalized()*speedMax*delta)
+		if(target.distance_to(global_position)<2):
+			target_reached()
 		pass
 	
 	if(painting): #path painting happens here
-		var selection = GM.currentBoard.world_to_map(get_global_mouse_position())
-		if ( selection != paintedCell):
-
-			var direction = paintedCell - selection
-			if (direction.length()>1):
-				print("oops! diagonal!")
-				if( abs(selection.x-paintedCell.x)>abs(selection.y-paintedCell.y) ):
-					direction.x = 0
-				else:
-					direction.y = 0
-				selection = paintedCell - direction
-			var target = Vector2()
-			
-			target.x = (direction.x-direction.y)*(-22)
-			target.y = (direction.x+direction.y)*(-13)
-			if(!GM.currentBoard.is_cell_valid(selection) ):
-				cancel_path()
-			else:
-				if(target!=Vector2(0,0)): 
-					$PathPreview.add_point($PathPreview.points[$PathPreview.points.size()-1] + target)
-				$EndPreview.position += target
-				paintedCell = selection
-				if $PathPreview.points.size()>4 :
-					start_path()
+		pass
+#		var selection = GM.currentBoard.world_to_map(get_global_mouse_position())
+#		if ( selection != paintedCell):
+#
+#			var direction = paintedCell - selection
+#			if (direction.length()>1):
+#				print("oops! diagonal!")
+#				if( abs(selection.x-paintedCell.x)>abs(selection.y-paintedCell.y) ):
+#					direction.x = 0
+#				else:
+#					direction.y = 0
+#				selection = paintedCell - direction
+#			var target = Vector2()
+#
+#			target.x = (direction.x-direction.y)*(-22)
+#			target.y = (direction.x+direction.y)*(-13)
+#			if(!GM.currentBoard.is_cell_valid(selection) ):
+#				cancel_path()
+#			else:
+#				if(target!=Vector2(0,0)): 
+#					$PathPreview.add_point($PathPreview.points[$PathPreview.points.size()-1] + target)
+#				$EndPreview.position += target
+#				paintedCell = selection
+#				if $PathPreview.points.size()>4 :
+#					start_path()
 	
+
+func target_reached():
+	print("reached")
+	if (targetList.size()<1):
+		finish_path()
+	else:
+		target = targetList.pop_back()
+		print(target)
+	pass
 
 func paint_path():
 	painting = true
+	$PathPreview.clear_path()
 	$PathPreview.visible = true
 	print("painting path!")
 
@@ -125,15 +145,20 @@ func start_path():
 	# called once path is finished
 	painting = false
 	$PathPreview.visible = false
-	$EndPreview.visible = false
-	followPath = true
+	moving = true
 	blockInput = true
+	print($PathPreview.get_points())
+	targetList = $PathPreview.get_points()
+	for n in targetList.size() :
+		targetList[n]-=$PathPreview.position
+	target_reached()
+
 	print("path started!")
 	pass
 
 func finish_path():
 	blockInput = false
-	followPath = false
+	moving = false
 	pass
 
 
