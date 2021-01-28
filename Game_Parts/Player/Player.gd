@@ -26,6 +26,7 @@ var speedCurrent = 0
 var speedAcceleration = 90
 
 var target = Vector2()
+var lastTarget = false
 var targetList = []
 
 var playerHP = 10
@@ -87,11 +88,17 @@ func _physics_process(delta):
 
 	if(moving):
 		var endPos =  target - global_position
-		if(speedCurrent<speedMax):
-			speedCurrent+=speedAcceleration*delta
+
+		
 		move_and_collide(endPos.normalized()*speedCurrent*delta)
 		if(target.distance_to(global_position)<2):
 			target_reached()
+		if(lastTarget and target.distance_to(global_position)<60):
+			speedCurrent -= speedAcceleration*delta 
+			speedCurrent = max(30,speedCurrent)
+		elif(speedCurrent<speedMax):
+			speedCurrent+=speedAcceleration*delta
+			
 		pass
 	
 	if(painting): #path painting happens here
@@ -124,6 +131,10 @@ func _physics_process(delta):
 
 func target_reached():
 	print("reached")
+	lastTarget = false
+	if(targetList.size()==1):
+		lastTarget = true
+		print("last target!")
 	if (targetList.size()<1):
 		finish_path()
 	else:
