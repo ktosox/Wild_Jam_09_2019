@@ -21,9 +21,9 @@ var paintedCell = Vector2()
 
 var fireReady = true
 
-var speedMax = 50
+var speedMax = 100
 var speedCurrent = 0
-var speedAcceleration = 5
+var speedAcceleration = 90
 
 var target = Vector2()
 var targetList = []
@@ -48,6 +48,8 @@ func _input(event):
 	if(event.is_action_pressed("ui_select")):
 		if(painting):
 			start_path()
+		else:
+			paint_path()
 			pass
 #		if(shooting):
 #			if(fireReady ): # and fireData[3]>0  - I cut this out so ammo is infinite
@@ -85,7 +87,9 @@ func _physics_process(delta):
 
 	if(moving):
 		var endPos =  target - global_position
-		move_and_collide(endPos.normalized()*speedMax*delta)
+		if(speedCurrent<speedMax):
+			speedCurrent+=speedAcceleration*delta
+		move_and_collide(endPos.normalized()*speedCurrent*delta)
 		if(target.distance_to(global_position)<2):
 			target_reached()
 		pass
@@ -150,7 +154,7 @@ func start_path():
 	print($PathPreview.get_points())
 	targetList = $PathPreview.get_points()
 	for n in targetList.size() :
-		targetList[n]-=$PathPreview.position
+		targetList[n]-=Vector2(0,-10)
 	target_reached()
 
 	print("path started!")
@@ -159,6 +163,10 @@ func start_path():
 func finish_path():
 	blockInput = false
 	moving = false
+	painting = true
+	speedCurrent=0
+	$PathPreview.clear_path()
+	$PathPreview.visible = true
 	pass
 
 

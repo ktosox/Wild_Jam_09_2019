@@ -1,7 +1,7 @@
 extends Node2D
 
 
-var previewRange = 300
+var previewRange = 150
 
 var painting = true
 
@@ -48,3 +48,4 @@ func clear_path():
 		$Line.remove_point(0)
 	$Line.add_point(Vector2())
 	$Line.add_point(Vector2())
+	position = Vector2(0,0)
