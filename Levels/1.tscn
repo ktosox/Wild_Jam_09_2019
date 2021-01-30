@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Game_Parts/Board/Board.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Game_Parts/Player/Player.tscn" type="PackedScene" id=2]
@@ -6,7 +6,6 @@
 [ext_resource path="res://Game_Parts/Portals/Exit.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Game_Parts/Board/instruction_font.tres" type="DynamicFont" id=5]
 [ext_resource path="res://Levels/Level.gd" type="Script" id=6]
-[ext_resource path="res://Game_Parts/Enemy/EnemyBody.tscn" type="PackedScene" id=7]
 
 [node name="Level1" type="YSort"]
 script = ExtResource( 6 )
@@ -62,12 +61,3 @@ your tank to move"
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="EnemyBody" parent="." instance=ExtResource( 7 )]
-position = Vector2( 125.144, 460.291 )
-
-[node name="EnemyBody2" parent="." instance=ExtResource( 7 )]
-position = Vector2( 398.231, 244.034 )
-
-[node name="EnemyBody3" parent="." instance=ExtResource( 7 )]
-position = Vector2( 598.425, 182.967 )

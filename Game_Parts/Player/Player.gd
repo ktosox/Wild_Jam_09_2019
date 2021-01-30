@@ -15,7 +15,7 @@ var blockInput = false
 
 var moving = false
 var painting = true
-var shooting = true
+var shooting = false
 
 var paintedCell = Vector2()
 
@@ -32,17 +32,8 @@ var targetList = []
 var playerHP = 10
 
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	GM.currentPlayer = self
-#	update_current_cell()
-#	fixLocation()
-#	GM.currentBoard.updateInterface(fireData)
-	pass # Replace with function body.
-
-#func update_current_cell():
-#	currentCell = GM.currentBoard.world_to_map(global_position)
-#	z_index=GM.currentBoard.world_to_map(global_position).x+GM.currentBoard.world_to_map(global_position).y
 
 func _input(event):
 
@@ -52,16 +43,16 @@ func _input(event):
 		else:
 			paint_path()
 			pass
-#		if(shooting):
+		if(shooting):
+			$Canon.fire_bullet()
 #			if(fireReady ): # and fireData[3]>0  - I cut this out so ammo is infinite
 #				fireReady = false
 #				$TimerFireCooldown.start()
-#				$Canon.fire_bullet()
+#				
 #	#			$Canon.fire_canon(fireData)
 #	#			fireData[3] -= 1
 #	#			GM.currentBoard.updateInterface(fireData)
-	if(event.is_action_pressed("LMB")):
-		print(get_global_mouse_position())
+#	if(event.is_action_pressed("LMB")):
 #		if(painting):
 #			start_path()
 #			pass
@@ -73,16 +64,17 @@ func _input(event):
 #				jump_in_direction(direction)
 	if(event.is_action_pressed("RMB")):
 		if(painting):
-			cancel_path()
+			shooting = true
+			painting = false
 #			shooting = true
-#		if(shooting):
+		if(shooting):
+			shooting = false
+			painting = true
 #			paint_path()
 		#find the selected cell
 		# check if cell is okay
 		#jump_in_direction(Vector2((((randi()%2)*2)-1),(((randi()%2)*2)-1)))
 
-#func fixLocation():
-#	global_position = GM.currentBoard.global_to_grid(global_position)
 	
 func _physics_process(delta):
 
@@ -103,31 +95,6 @@ func _physics_process(delta):
 	
 	if(painting): #path painting happens here
 		pass
-#		var selection = GM.currentBoard.world_to_map(get_global_mouse_position())
-#		if ( selection != paintedCell):
-#
-#			var direction = paintedCell - selection
-#			if (direction.length()>1):
-#				print("oops! diagonal!")
-#				if( abs(selection.x-paintedCell.x)>abs(selection.y-paintedCell.y) ):
-#					direction.x = 0
-#				else:
-#					direction.y = 0
-#				selection = paintedCell - direction
-#			var target = Vector2()
-#
-#			target.x = (direction.x-direction.y)*(-22)
-#			target.y = (direction.x+direction.y)*(-13)
-#			if(!GM.currentBoard.is_cell_valid(selection) ):
-#				cancel_path()
-#			else:
-#				if(target!=Vector2(0,0)): 
-#					$PathPreview.add_point($PathPreview.points[$PathPreview.points.size()-1] + target)
-#				$EndPreview.position += target
-#				paintedCell = selection
-#				if $PathPreview.points.size()>4 :
-#					start_path()
-	
 
 func target_reached():
 	print("reached")
@@ -181,37 +148,6 @@ func finish_path():
 	pass
 
 
-#func grabToken(newFireData):
-#	print("got this from token: ", newFireData)
-#	var pattern = [0,1,2]
-#	pattern.remove(randi()%3)
-#	fireData[pattern[0]] = newFireData[pattern[0]]
-#	fireData[pattern[1]] = newFireData[pattern[1]]
-#	fireData[3] = newFireData[3]
-#	fireData[4] = mergColors(fireData[4],newFireData[4])
-#	GM.currentBoard.updateInterface(fireData)
-#	pass
-
-
-#func mergColors(Color1=Color(), Color2=Color()):
-#	var newColor = Color()
-#	match (randi()%3):
-#		0:
-#			newColor.r=Color1.r
-#			newColor.b=Color2.b
-#			newColor.g=(Color1.g + Color2.g)/2.0
-#		1:
-#			newColor.r=Color2.r
-#			newColor.g=Color1.g
-#			newColor.b=(Color1.b + Color2.b)/2.0
-#
-#		2:
-#			newColor.g=Color2.g
-#			newColor.b=Color1.b
-#			newColor.r=(Color1.r + Color2.r)/2.0
-#
-#
-#	return newColor
 
 func _on_TimerFireCooldown_timeout():
 	fireReady = true
@@ -235,3 +171,47 @@ func winGame():
 	blockInput = true
 	pass
 
+
+#OLD PAITING
+#		var selection = GM.currentBoard.world_to_map(get_global_mouse_position())
+#		if ( selection != paintedCell):
+#
+#			var direction = paintedCell - selection
+#			if (direction.length()>1):
+#				print("oops! diagonal!")
+#				if( abs(selection.x-paintedCell.x)>abs(selection.y-paintedCell.y) ):
+#					direction.x = 0
+#				else:
+#					direction.y = 0
+#				selection = paintedCell - direction
+#			var target = Vector2()
+#
+#			target.x = (direction.x-direction.y)*(-22)
+#			target.y = (direction.x+direction.y)*(-13)
+#			if(!GM.currentBoard.is_cell_valid(selection) ):
+#				cancel_path()
+#			else:
+#				if(target!=Vector2(0,0)): 
+#					$PathPreview.add_point($PathPreview.points[$PathPreview.points.size()-1] + target)
+#				$EndPreview.position += target
+#				paintedCell = selection
+#				if $PathPreview.points.size()>4 :
+#					start_path()
+
+#func grabToken(newFireData):
+#	print("got this from token: ", newFireData)
+#	var pattern = [0,1,2]
+#	pattern.remove(randi()%3)
+#	fireData[pattern[0]] = newFireData[pattern[0]]
+#	fireData[pattern[1]] = newFireData[pattern[1]]
+#	fireData[3] = newFireData[3]
+#	fireData[4] = mergColors(fireData[4],newFireData[4])
+#	GM.currentBoard.updateInterface(fireData)
+#	pass
+
+#func fixLocation():
+#	global_position = GM.currentBoard.global_to_grid(global_position)
+
+#func update_current_cell():
+#	currentCell = GM.currentBoard.world_to_map(global_position)
+#	z_index=GM.currentBoard.world_to_map(global_position).x+GM.currentBoard.world_to_map(global_position).y
