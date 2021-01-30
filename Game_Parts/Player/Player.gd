@@ -40,40 +40,25 @@ func _input(event):
 	if(event.is_action_pressed("ui_select")):
 		if(painting):
 			start_path()
-		else:
-			paint_path()
-			pass
-		if(shooting):
-			$Canon.fire_bullet()
-#			if(fireReady ): # and fireData[3]>0  - I cut this out so ammo is infinite
-#				fireReady = false
-#				$TimerFireCooldown.start()
-#				
-#	#			$Canon.fire_canon(fireData)
-#	#			fireData[3] -= 1
-#	#			GM.currentBoard.updateInterface(fireData)
+		if(shooting and fireReady):
+			shoot()
+
+
 #	if(event.is_action_pressed("LMB")):
 #		if(painting):
 #			start_path()
 #			pass
 #		pass
-		
-#		if(GM.currentBoard.is_cell_valid(clickedCell)): # this is part of the previous movement system
-#			var direction = currentCell - clickedCell
-#			if(validDirections.has(direction)):
-#				jump_in_direction(direction)
+
 	if(event.is_action_pressed("RMB")):
 		if(painting):
 			shooting = true
-			painting = false
+			cancel_path()
 #			shooting = true
-		if(shooting):
+		elif(shooting):
 			shooting = false
-			painting = true
+			paint_path()
 #			paint_path()
-		#find the selected cell
-		# check if cell is okay
-		#jump_in_direction(Vector2((((randi()%2)*2)-1),(((randi()%2)*2)-1)))
 
 	
 func _physics_process(delta):
@@ -95,6 +80,13 @@ func _physics_process(delta):
 	
 	if(painting): #path painting happens here
 		pass
+
+
+func shoot():
+	$Canon.fire_bullet()
+	fireReady = false
+	$TimerFireCooldown.start()
+	pass
 
 func target_reached():
 	print("reached")
@@ -129,7 +121,7 @@ func start_path():
 	$PathPreview.visible = false
 	moving = true
 	blockInput = true
-	print($PathPreview.get_points())
+#	print($PathPreview.get_points())
 	targetList = $PathPreview.get_points()
 	for n in targetList.size() :
 		targetList[n]-=Vector2(0,-10)
@@ -151,6 +143,8 @@ func finish_path():
 
 func _on_TimerFireCooldown_timeout():
 	fireReady = true
+	if(Input.is_action_pressed("ui_select") and shooting):
+		shoot()
 	pass # Replace with function body.
 	
 

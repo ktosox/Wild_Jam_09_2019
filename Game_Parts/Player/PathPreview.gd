@@ -28,6 +28,8 @@ func get_points():
 	stuff.pop_front()
 	for n in stuff.size():
 		stuff[n]+=global_position
+	if stuff.size()<1 :
+		stuff.append(get_local_mouse_position().clamped(previewRange)+global_position)
 	return stuff
 
 
