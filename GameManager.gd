@@ -12,7 +12,9 @@ var currentPlayer
 
 var currentBoard
 
-var currentLevel = 1
+var currentLevel = 0
+
+var currentSpawner
 
 #------------------------------------------------
 

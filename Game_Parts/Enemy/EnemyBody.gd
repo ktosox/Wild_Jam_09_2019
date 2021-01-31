@@ -23,9 +23,9 @@ func _ready():
 func _physics_process(delta):
 	if(active):
 		apply_impulse(Vector2(),direction*speed*delta * speedMod)
-	if abs(rotation) >0.3 :
-		print("test")
-		apply_torque_impulse(rotation*delta*90000)
+	if abs(rotation) >0.4 :
+		print(self, "correction")
+		apply_torque_impulse(-rotation*delta*7000000)
 	if($Sprite.global_rotation !=0):
 		$Sprite.global_rotation = 0
 	pass
@@ -63,3 +63,6 @@ func _on_HitBox_area_entered(area):
 	get_hit()
 	area.pop()
 	pass # Replace with function body.
+
+func _exit_tree():
+	GM.currentSpawner.report_death(self)
