@@ -28,7 +28,7 @@ func get_points():
 	stuff.pop_front()
 	for n in stuff.size():
 		stuff[n]+=global_position
-	if stuff.size()<1 :
+	if stuff.size()<1 and !$Ray.is_colliding() :
 		stuff.append(get_local_mouse_position().clamped(previewRange)+global_position)
 	return stuff
 
@@ -36,9 +36,15 @@ func get_points():
 func update_path():
 	target = get_local_mouse_position().clamped(previewRange)
 	$Ray.cast_to = target
+	if ($Ray.is_colliding()):
+		$Line.modulate = Color(1,0,0)
+	else:
+		$Line.modulate = Color(0,1,0)
 	$Line.set_point_position(0,target)
 
 func add_point():
+	if $Ray.is_colliding() :
+		return
 	var currentPosition = global_position
 	global_position = get_global_mouse_position()
 	for j in $Line.get_point_count() :

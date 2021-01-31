@@ -12,7 +12,7 @@ var currentPlayer
 
 var currentBoard
 
-var currentLevel = 0
+var currentLevel = 10
 
 var currentSpawner
 
@@ -76,21 +76,24 @@ func switchLevel():
 
 # this requires an overhaul, I guess
 func resetLevel():
-		match(currentLevel):
-			1:
-				get_tree().change_scene("res://Levels/1.tscn")
-			2:
-				get_tree().change_scene("res://Levels/2.tscn")
-			3:
-				get_tree().change_scene("res://Levels/3.tscn")
-			4:
-				get_tree().change_scene("res://Levels/4.tscn")
-			5:
-				get_tree().change_scene("res://Levels/5.tscn")
-			6:
-				get_tree().change_scene("res://Levels/6.tscn")
-			7:
-				changeToCredits()
+	get_tree().change_scene("res://Levels/1.tscn")
+	pass
+	
+#		match(currentLevel):
+#			1:
+#				get_tree().change_scene("res://Levels/1.tscn")
+#			2:
+#				get_tree().change_scene("res://Levels/2.tscn")
+#			3:
+#				get_tree().change_scene("res://Levels/3.tscn")
+#			4:
+#				get_tree().change_scene("res://Levels/4.tscn")
+#			5:
+#				get_tree().change_scene("res://Levels/5.tscn")
+#			6:
+#				get_tree().change_scene("res://Levels/6.tscn")
+#			7:
+#				changeToCredits()
 
 # dont forget to change this to return menu on html realease
 func end_program():

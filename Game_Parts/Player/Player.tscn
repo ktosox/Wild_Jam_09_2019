@@ -15,7 +15,7 @@
 [ext_resource path="res://Game_Parts/Player/Overlay.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Game_Parts/Player/PathPreview.tscn" type="PackedScene" id=14]
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=1]
 length = 0.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("Path2D/PathFollow2D:unit_offset")
@@ -80,7 +80,7 @@ tracks/4/keys = {
 "values": [ Vector2( 1, 0.5 ), Vector2( 0.3, 0.15 ), Vector2( 1, 0.5 ) ]
 }
 
-[sub_resource type="CapsuleShape2D" id=6]
+[sub_resource type="CapsuleShape2D" id=2]
 radius = 8.0
 height = 13.0
 
@@ -108,12 +108,12 @@ stream = ExtResource( 2 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 playback_speed = 0.6
-anims/move = SubResource( 2 )
+anims/move = SubResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, -8 )
 rotation = 1.5708
-shape = SubResource( 6 )
+shape = SubResource( 2 )
 __meta__ = {
 "_editor_description_": ""
 }

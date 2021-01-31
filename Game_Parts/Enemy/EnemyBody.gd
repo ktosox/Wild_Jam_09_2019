@@ -66,3 +66,9 @@ func _on_HitBox_area_entered(area):
 
 func _exit_tree():
 	GM.currentSpawner.report_death(self)
+
+
+func _on_HitBox_body_entered(body):
+	get_hit()
+	body.pop()
+	pass # Replace with function body.

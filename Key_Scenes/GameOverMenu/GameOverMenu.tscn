@@ -27,9 +27,10 @@ pause_mode = 2
 script = ExtResource( 1 )
 
 [node name="ColorRect" type="ColorRect" parent="."]
+modulate = Color( 0.0666667, 0.0431373, 0.0431373, 0.443137 )
 anchor_right = 1.0
 anchor_bottom = 1.0
-color = Color( 0.2, 0.282353, 0.321569, 0.729412 )
+color = Color( 0, 0, 0, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -120,5 +121,7 @@ margin_top = 220.0
 margin_right = 600.0
 margin_bottom = 260.0
 rect_min_size = Vector2( 0, 40 )
+
+[node name="SadTune" type="AudioStreamPlayer" parent="."]
 [connection signal="pressed" from="Panel/VBoxContainer/HBoxContainer/GameOverButton" to="." method="_on_GameOverButton_pressed"]
 [connection signal="pressed" from="Panel/VBoxContainer/HBoxContainer/GameOverButton3" to="." method="_on_GameOverButton3_pressed"]
