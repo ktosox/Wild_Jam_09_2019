@@ -11,8 +11,6 @@ var fireData = [
 
 
 
-var blockInput = false
-
 var moving = false
 var painting = true
 var shooting = false
@@ -29,9 +27,6 @@ var target = Vector2()
 var lastTarget = false
 var targetList = []
 
-var playerHP = 10
-
-
 func _ready():
 	GM.currentPlayer = self
 
@@ -40,7 +35,7 @@ func _input(event):
 	if(event.is_action_pressed("ui_select")):
 		if(painting):
 			start_path()
-		if(shooting and fireReady):
+		elif(fireReady):
 			shoot()
 
 
@@ -52,13 +47,9 @@ func _input(event):
 
 	if(event.is_action_pressed("RMB")):
 		if(painting):
-			shooting = true
 			cancel_path()
-#			shooting = true
-		elif(shooting):
-			shooting = false
+		elif(!moving):
 			paint_path()
-#			paint_path()
 
 	
 func _physics_process(delta):
@@ -110,7 +101,6 @@ func paint_path():
 func cancel_path():
 	# called when something goes wrong while painting path
 	painting = false
-	blockInput = false
 	$PathPreview.visible = false
 	print("cancelled path!")
 	pass
@@ -120,7 +110,6 @@ func start_path():
 	painting = false
 	$PathPreview.visible = false
 	moving = true
-	blockInput = true
 #	print($PathPreview.get_points())
 	targetList = $PathPreview.get_points()
 	for n in targetList.size() :
@@ -131,28 +120,25 @@ func start_path():
 	pass
 
 func finish_path():
-	blockInput = false
 	moving = false
-	painting = true
 	speedCurrent=0
 	$PathPreview.clear_path()
-	$PathPreview.visible = true
 	pass
 
 
 
 func _on_TimerFireCooldown_timeout():
 	fireReady = true
-	if(Input.is_action_pressed("ui_select") and shooting):
+	if(Input.is_action_pressed("ui_select") ):
 		shoot()
 	pass # Replace with function body.
 	
 
 #called when player gets damaged
 func damange():
-	playerHP -= 1
+	GM.playerHP -= 1
 	#camera shake shood be implemented here
-	if(playerHP < 1):
+	if(GM.playerHP < 1):
 		GM.lose_game()
 
 func pop():
@@ -162,7 +148,6 @@ func pop():
 func winGame():
 	# - make player immortal
 	# - pay a tune?
-	blockInput = true
 	pass
 
 

@@ -84,5 +84,5 @@ RMB={
 quality/driver/driver_name="GLES2"
 vram_compression/import_etc=true
 vram_compression/import_etc2=false
-environment/default_clear_color=Color( 0.0392157, 0.631373, 0.745098, 1 )
+environment/default_clear_color=Color( 0.188235, 0.231373, 0.239216, 1 )
 environment/default_environment="res://default_env.tres"

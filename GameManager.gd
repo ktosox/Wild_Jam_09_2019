@@ -12,9 +12,17 @@ var currentPlayer
 
 var currentBoard
 
-var currentLevel = 10
+var currentLevel = 0
 
 var currentSpawner
+
+#------------------------------------------------
+
+# Overlay stuff
+
+var playerHP = 10
+
+var enemyCount = 0
 
 #------------------------------------------------
 
@@ -77,6 +85,8 @@ func switchLevel():
 # this requires an overhaul, I guess
 func resetLevel():
 	get_tree().change_scene("res://Levels/1.tscn")
+	playerHP = 10
+	currentLevel = 0
 	pass
 	
 #		match(currentLevel):
