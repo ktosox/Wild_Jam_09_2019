@@ -33,9 +33,7 @@ func _ready():
 func _input(event):
 
 	if(event.is_action_pressed("ui_select")):
-		if(painting):
-			start_path()
-		elif(fireReady):
+		if(fireReady):
 			shoot()
 
 
@@ -45,32 +43,17 @@ func _input(event):
 #			pass
 #		pass
 
-	if(event.is_action_pressed("RMB")):
-		if(painting):
-			cancel_path()
-		elif(!moving):
-			paint_path()
+#	if(event.is_action_pressed("RMB")):
+#		if(painting):
+#			cancel_path()
+#		elif(!moving):
+#			paint_path()
 
 	
 func _physics_process(delta):
 
-	if(moving):
-		var endPos =  target - global_position
-
-		
-		move_and_collide(endPos.normalized()*speedCurrent*delta)
-		if(target.distance_to(global_position)<2):
-			target_reached()
-		if(lastTarget and target.distance_to(global_position)<60):
-			speedCurrent -= speedAcceleration*delta 
-			speedCurrent = max(30,speedCurrent)
-		elif(speedCurrent<speedMax):
-			speedCurrent+=speedAcceleration*delta
-			
-		pass
+	pass
 	
-	if(painting): #path painting happens here
-		pass
 
 
 func shoot():
@@ -78,53 +61,6 @@ func shoot():
 	fireReady = false
 	$TimerFireCooldown.start()
 	pass
-
-func target_reached():
-	print("reached")
-	lastTarget = false
-	if(targetList.size()==1):
-		lastTarget = true
-		print("last target!")
-	if (targetList.size()<1):
-		finish_path()
-	else:
-		target = targetList.pop_back()
-		print(target)
-	pass
-
-func paint_path():
-	painting = true
-	$PathPreview.clear_path()
-	$PathPreview.visible = true
-	print("painting path!")
-
-func cancel_path():
-	# called when something goes wrong while painting path
-	painting = false
-	$PathPreview.visible = false
-	print("cancelled path!")
-	pass
-
-func start_path():
-	# called once path is finished
-	painting = false
-	$PathPreview.visible = false
-	moving = true
-#	print($PathPreview.get_points())
-	targetList = $PathPreview.get_points()
-	for n in targetList.size() :
-		targetList[n]-=Vector2(0,-10)
-	target_reached()
-
-	print("path started!")
-	pass
-
-func finish_path():
-	moving = false
-	speedCurrent=0
-	$PathPreview.clear_path()
-	pass
-
 
 
 func _on_TimerFireCooldown_timeout():
