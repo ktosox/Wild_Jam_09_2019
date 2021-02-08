@@ -10,22 +10,14 @@ var fireData = [
 #----------------------------------------------
 
 
+var selected = false
 
 var moving = false
-var painting = true
 var shooting = false
-
-var paintedCell = Vector2()
 
 var fireReady = true
 
-var speedMax = 100
-var speedCurrent = 0
-var speedAcceleration = 90
-
-var target = Vector2()
-var lastTarget = false
-var targetList = []
+var moveForce = Vector2(0,0)
 
 func _ready():
 	GM.currentPlayer = self
@@ -37,12 +29,16 @@ func _input(event):
 			shoot()
 
 
-#	if(event.is_action_pressed("LMB")):
-#		if(painting):
-#			start_path()
-#			pass
-#		pass
-
+	if(event.is_action_pressed("LMB")):
+		if(selected):
+			$Launcher.active = true
+	if(event.is_action_released("LMB")):
+		if($Launcher.active):
+			$Launcher.active = false
+			moveForce = $Launcher.get_line()
+#			var output = $Launcher.get_line()
+#			print("power: ",output.length()," - angle: ",output.normalized())
+		pass
 #	if(event.is_action_pressed("RMB")):
 #		if(painting):
 #			cancel_path()
@@ -51,10 +47,16 @@ func _input(event):
 
 	
 func _physics_process(delta):
-
+	var colision = move_and_collide(moveForce*0.1)
+	moveForce = moveForce.clamped(moveForce.length()-moveForce.length()*delta)
+	if(colision!=null):
+		bounce(colision.normal)
 	pass
 	
 
+func bounce(normal):
+	moveForce = moveForce.bounce(normal)
+	pass
 
 func shoot():
 	$Canon.fire_bullet()
@@ -130,3 +132,13 @@ func winGame():
 #func update_current_cell():
 #	currentCell = GM.currentBoard.world_to_map(global_position)
 #	z_index=GM.currentBoard.world_to_map(global_position).x+GM.currentBoard.world_to_map(global_position).y
+
+
+func _on_Player_mouse_entered():
+	selected = true
+	pass # Replace with function body.
+
+
+func _on_Player_mouse_exited():
+	selected = false
+	pass # Replace with function body.
