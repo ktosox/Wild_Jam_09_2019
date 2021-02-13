@@ -47,7 +47,7 @@ func _input(event):
 
 	
 func _physics_process(delta):
-	var colision = move_and_collide(moveForce*0.1)
+	var colision = move_and_collide(moveForce*6*delta)
 	moveForce = moveForce.clamped(moveForce.length()-moveForce.length()*delta)
 	if(colision!=null):
 		bounce(colision.normal)
